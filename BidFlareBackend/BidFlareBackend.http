@@ -1,0 +1,6 @@
+@BidFlareBackend_HostAddress = http://localhost:5239
+
+GET {{BidFlareBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

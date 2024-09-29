@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9sJ9KOJCef0fdCLcPTKwhppo+gcV9UscCdGAp7n2prU=",
+  "Source": "BidFlareBackend",
+  "BasePath": "_content/BidFlareBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
