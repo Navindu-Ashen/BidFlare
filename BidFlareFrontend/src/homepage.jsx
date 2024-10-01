@@ -1,6 +1,6 @@
-import './sidebar.css'
+import './homepage.css'
 
-function Sidebar(){
+function Home(){
     return(
         <div class="sidebar">
         <div class="logo">
@@ -27,4 +27,4 @@ function Sidebar(){
     );
 }
 
-export default Sidebar
+export default Home

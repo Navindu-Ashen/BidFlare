@@ -1,10 +1,10 @@
-import Sidebar from './sidebar.jsx'
+import Home from './homepage.jsx'
 
 
 function App() {
   return(
     <> 
-    <Sidebar/>
+    <Home/>
     </>
     
   );
