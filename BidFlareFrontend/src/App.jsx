@@ -1,10 +1,10 @@
-import Home from './homepage.jsx'
+import Dashboard from './dashboardpage.jsx'
 
 
 function App() {
   return(
     <> 
-    <Home/>
+    <Dashboard/>
     </>
     
   );

@@ -1,6 +1,6 @@
-import './homepage.css'
+import './dashboardpage.css'
 
-function Home(){
+function Dashboard(){
     return(
         <div class="sidebar">
         <div class="logo">
@@ -23,8 +23,9 @@ function Home(){
             </ul>
         </nav>
     </div>
+    
 
     );
 }
 
-export default Home
+export default Dashboard
