@@ -4,7 +4,8 @@ import Dashboard from './dashboardpage.jsx'
 function App() {
   return(
     <> 
-    <Dashboard/>
+    
+    <Homepage/>
     <div>
       <h1></h1>
     </div>
