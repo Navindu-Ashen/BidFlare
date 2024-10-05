@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import carOne from './assets/images/car1.png'
+
 
 function Auction(){
     const [bid,setBid] = useState('');
@@ -20,7 +22,7 @@ function Auction(){
 
                 {/*Auction Image*/}
                 <div className='mb-6' >
-                    <img className= "w-full h-auto object-cover rounded-lg "  src="https://via.placeholder.com/500x300" alt="Auction Item" />
+                    <img className= "w-full h-auto object-cover rounded-lg "  src= "https://via.placeholder.com/600x400" alt="Auction Item" />
                 </div>
 
                 {/**Bid Details */}
