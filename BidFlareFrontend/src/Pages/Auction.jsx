@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import carOne from './assets/images/car1.png'
+import carOne from '../assets/images/car1.png'
 
 
 function Auction(){
@@ -22,7 +22,7 @@ function Auction(){
 
                 {/*Auction Image*/}
                 <div className='mb-6' >
-                    <img className= "w-full h-auto object-cover rounded-lg "  src= "https://via.placeholder.com/600x400" alt="Auction Item" />
+                    <img className= "w-full h-auto object-cover rounded-lg "  src= {carOne} alt="Auction Item" />
                 </div>
 
                 {/**Bid Details */}
