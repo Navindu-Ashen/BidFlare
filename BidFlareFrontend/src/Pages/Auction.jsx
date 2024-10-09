@@ -66,8 +66,38 @@ useEffect(() => {
                 {/**Bid Details */}
                 <div className='mb-6' >
                     <h2 className= "text-xl font-semibold" >Current Bid: $500,000</h2>
-                    <p className="text-gray-600" >Ends in: {timeLeft.days} Days {timeLeft.hours}  Hours {timeLeft.minutes}  Minutes  {timeLeft.seconds} Seconds </p>
+
+                    <p className="text-gray-600 text-lg font-medium mb-4">
+  Ends in:
+</p>
+<div className="flex justify-center space-x-4 mb-6">
+  {/* Days */}
+  <div className="text-center bg-blue-100 p-4 rounded-lg shadow-md">
+    <p className="text-3xl font-bold text-blue-600">{timeLeft.days}</p>
+    <p className="text-sm text-gray-700">Days</p>
+  </div>
+  
+  {/* Hours */}
+  <div className="text-center bg-blue-100 p-4 rounded-lg shadow-md">
+    <p className="text-3xl font-bold text-blue-600">{timeLeft.hours}</p>
+    <p className="text-sm text-gray-700">Hours</p>
+  </div>
+  
+  {/* Minutes */}
+  <div className="text-center bg-blue-100 p-4 rounded-lg shadow-md">
+    <p className="text-3xl font-bold text-blue-600">{timeLeft.minutes}</p>
+    <p className="text-sm text-gray-700">Minutes</p>
+  </div>
+  
+  {/* Seconds */}
+  <div className="text-center bg-blue-100 p-4 rounded-lg shadow-md">
+    <p className="text-3xl font-bold text-blue-600">{timeLeft.seconds}</p>
+    <p className="text-sm text-gray-700">Seconds</p>
+  </div>
+</div>
+
                     <p className="text-gray-600" >Minimum Increment: $50,000</p>
+                    
                 </div>
 
                 {/*Bid Form*/}
