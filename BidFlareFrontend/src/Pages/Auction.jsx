@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Slider from "react-slick";
 import carOne from '../assets/images/car1.png'
+import carTwo from '../assets/images/car2.png'
+import carThree from '../assets/images/car3.png'
+import carFour from '../assets/images/car4.png'
 
 
 //This is the countdown
@@ -51,6 +55,22 @@ useEffect(() => {
     return () => clearInterval(timer);
 }, []);
 
+//carousel carousel carousel carousel
+//This is the carousel control settings
+
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+};
+
+
+
 
     return(
         <div className="bg-gray-100 min-h-screen p-4">
@@ -58,16 +78,45 @@ useEffect(() => {
             <div className="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg" >
                 <h1 className="text-3xl font-bold mb-4" >Auction Details</h1>
 
+
+
                 {/*Auction Image*/}
                 <div className='mb-6' >
                     <img className= "w-full h-auto object-cover rounded-lg "  src= {carOne} alt="Auction Item" />
                 </div>
 
+
+
+
+
+{/* Image Carousel Below the Static Image */}
+<div className='mb-6'>
+                    <Slider {...settings}>
+                        <div>
+                            <img className="w-full h-auto object-cover rounded-lg" src={carOne} alt="Auction Item 1" />
+                        </div>
+                        <div>
+                            <img className="w-full h-auto object-cover rounded-lg" src={carTwo} alt="Auction Item 2" />
+                        </div>
+                        <div>
+                            <img className="w-full h-auto object-cover rounded-lg" src={carThree} alt="Auction Item 3" />
+                        </div>
+                        <div>
+                            <img className="w-full h-auto object-cover rounded-lg" src={carFour} alt="Auction Item 3" />
+                        </div>
+                    </Slider>
+                </div>
+
+
+
+
+
+
                 {/**Bid Details */}
                 <div className='mb-6' >
                     <h2 className= "text-xl font-semibold" >Current Bid: $500,000</h2>
 
-                    <p className="text-gray-600 text-lg font-medium mb-4">
+                    <p className="text-red-700 text-lg font-bold mb-4">
   Ends in:
 </p>
 <div className="flex justify-center space-x-4 mb-6">
