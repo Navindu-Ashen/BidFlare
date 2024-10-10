@@ -11,7 +11,7 @@ function App() {
   return(
     <> 
     <Auction/>
-    {/* <Login/> */}
+    {/* <Login/> page needs to included */}
     <div>
       <h1></h1>
     </div>

@@ -17,7 +17,6 @@ function Auction(){
     });
 
 
-
     function handleBidSubmit(event){
         event.preventDefault();
         alert('Bid of $${bid} has been placed ');
@@ -67,27 +66,19 @@ const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
+
 };
-
-
-
 
     return(
         <div className="bg-gray-100 min-h-screen p-4">
             {/* Auction Header */}
             <div className="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg" >
-                <h1 className="text-3xl font-bold mb-4" >Auction Details</h1>
-
-
+                <h1 className="text-3xl font-bold mb-4 font-sans " >McLaren 720s</h1>
 
                 {/*Auction Image*/}
                 <div className='mb-6' >
                     <img className= "w-full h-auto object-cover rounded-lg "  src= {carOne} alt="Auction Item" />
                 </div>
-
-
-
-
 
 {/* Image Carousel Below the Static Image */}
 <div className='mb-6'>
@@ -104,19 +95,16 @@ const settings = {
                         <div>
                             <img className="w-full h-auto object-cover rounded-lg" src={carFour} alt="Auction Item 3" />
                         </div>
+                        
                     </Slider>
                 </div>
-
-
-
-
 
 
                 {/**Bid Details */}
                 <div className='mb-6' >
                     <h2 className= "text-xl font-semibold" >Current Bid: $500,000</h2>
 
-                    <p className="text-red-700 text-lg font-bold mb-4">
+                    <p className="text-red-700 text-lg font-extrabold mb-4">
   Ends in:
 </p>
 <div className="flex justify-center space-x-4 mb-6">
