@@ -5,5 +5,4 @@ namespace BidFlareBackend.Models;
 
 public class AppUser : IdentityUser
 {
-
 }

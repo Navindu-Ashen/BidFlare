@@ -4,6 +4,7 @@ using BidFlareBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BidFlareBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241012174707_UserRolesNew")]
+    partial class UserRolesNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,6 +49,9 @@ namespace BidFlareBackend.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NIC")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -116,21 +122,21 @@ namespace BidFlareBackend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "5e001985-5ef9-4ffb-824b-4274c78e0212",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "2",
-                            Name = "User",
-                            NormalizedName = "USER"
+                            Id = "5dcd4b3e-89b3-4836-bc94-17addd3d00c5",
+                            Name = "Organizer",
+                            NormalizedName = "ORGANIZER"
                         },
                         new
                         {
-                            Id = "3",
-                            Name = "Organiser",
-                            NormalizedName = "ORGANISER"
+                            Id = "8b9b2048-643d-4e64-977f-2bccd8da93af",
+                            Name = "User",
+                            NormalizedName = "USER"
                         });
                 });
 

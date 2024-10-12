@@ -1,6 +1,8 @@
+using System.Security.Claims;
 using BidFlareBackend.Dtos.Account;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,14 +23,16 @@ namespace BidFlareBackend.Controllers.Account
         {
             try
             {
-                if(!ModelState.IsValid){
+                if (!ModelState.IsValid)
+                {
                     return BadRequest(ModelState);
                 }
 
                 var appUser = new AppUser
                 {
                     UserName = registerDto.UserName,
-                    Email = registerDto.Email
+                    Email = registerDto.Email,
+                    PhoneNumber = registerDto.PhoneNumber,
                 };
 
                 var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password!);
@@ -81,6 +85,33 @@ namespace BidFlareBackend.Controllers.Account
                 UserName = user.UserName,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user)
+            });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetUserDetailsAsync()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (currentUserId is null)
+            {
+                return BadRequest("user id is null");
+            }
+
+            var user = await _userManager.FindByIdAsync(currentUserId!);
+
+            if (user is null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(new UserResponse
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Id = user.Id,
+                PhoneNumber = user.PhoneNumber
             });
         }
     }
