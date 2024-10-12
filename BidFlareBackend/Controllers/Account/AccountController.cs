@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using BidFlareBackend.Dtos.Account;
 using BidFlareBackend.Interfaces;
+using BidFlareBackend.Mappers;
 using BidFlareBackend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -12,11 +13,11 @@ namespace BidFlareBackend.Controllers.Account
 {
     [Route("api/account")]
     [ApiController]
-    public class AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager) : ControllerBase
+    public class AccountController(ITokenService tokenService, IAccountRepository accountRepo) : ControllerBase
     {
-        private readonly UserManager<AppUser> _userManager = userManager;
         private readonly ITokenService _tokenService = tokenService;
-        private readonly SignInManager<AppUser> _signInManager = signInManager;
+
+        private readonly IAccountRepository _accountRepo = accountRepo;
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
@@ -35,11 +36,11 @@ namespace BidFlareBackend.Controllers.Account
                     PhoneNumber = registerDto.PhoneNumber,
                 };
 
-                var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password!);
+                var createdUser = await _accountRepo.CreateUser(appUser, registerDto.Password!);
 
                 if (createdUser.Succeeded)
                 {
-                    var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
+                    var roleResult = await _accountRepo.AddUserRole(appUser, "User");
                     if (roleResult.Succeeded)
                     {
                         return Ok("User created successfully.");
@@ -67,15 +68,15 @@ namespace BidFlareBackend.Controllers.Account
             {
                 return BadRequest(ModelState);
             }
-            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginDto.UserName!.ToLower());
+            var user = await _accountRepo.FindUser(loginDto);
             if (user == null)
             {
                 return Unauthorized("Invalid username or password1!");
             }
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password!, false);
+            var result = await _accountRepo.LoginUser(user, loginDto);
 
-            if (!result.Succeeded)
+            if (!result!.Succeeded)
             {
                 return Unauthorized("Invalid username or password!");
             }
@@ -96,23 +97,17 @@ namespace BidFlareBackend.Controllers.Account
 
             if (currentUserId is null)
             {
-                return BadRequest("user id is null");
+                return BadRequest("User ID not found in the token");
             }
 
-            var user = await _userManager.FindByIdAsync(currentUserId!);
+            var user = await _accountRepo.GetUserDetails(currentUserId);
 
-            if (user is null)
+            if (user == null)
             {
                 return NotFound("User not found");
             }
 
-            return Ok(new UserResponse
-            {
-                UserName = user.UserName,
-                Email = user.Email,
-                Id = user.Id,
-                PhoneNumber = user.PhoneNumber
-            });
+            return Ok(user.ToUserDto());
         }
     }
 }

@@ -1,6 +1,7 @@
 using BidFlareBackend.Data;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Models;
+using BidFlareBackend.Repositiry;
 using BidFlareBackend.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -84,7 +85,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
-
+builder.Services.AddScoped<IAccountRepository, AccountRepositiry>();
 
 var app = builder.Build();
 

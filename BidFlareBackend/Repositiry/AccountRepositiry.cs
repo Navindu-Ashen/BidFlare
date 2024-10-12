@@ -1,8 +1,10 @@
 using System;
 using BidFlareBackend.Data;
+using BidFlareBackend.Dtos.Account;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BidFlareBackend.Repositiry;
 
@@ -12,8 +14,45 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
     private readonly ITokenService _tokenService = tokenService;
     private readonly SignInManager<AppUser> _signInManager = signInManager;
 
-    public Task<UserResponse> GetUserDetails()
+    public async Task<IdentityResult> AddUserRole(AppUser user, string role)
     {
-        throw new NotImplementedException();
+        var roleResult = await _userManager.AddToRoleAsync(user, role);
+        return roleResult;
+    }
+
+    public async Task<IdentityResult> CreateUser(AppUser user, string password)
+    {
+        var createdUser = await _userManager.CreateAsync(user, password);
+        return createdUser;
+    }
+
+    public async Task<AppUser?> FindUser(LoginDto loginDto)
+    {
+        var userResult = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginDto.UserName!.ToLower());
+        return userResult;
+    }
+
+    public async Task<UserResponse?> GetUserDetails(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        return new UserResponse
+        {
+            UserName = user.UserName,
+            Email = user.Email,
+            Id = user.Id,
+            PhoneNumber = user.PhoneNumber
+        };
+    }
+
+    public async Task<SignInResult?> LoginUser(AppUser appUser, LoginDto loginDto)
+    {
+        var result = await _signInManager.CheckPasswordSignInAsync(appUser, loginDto.Password!, false);
+        return result;
     }
 }
