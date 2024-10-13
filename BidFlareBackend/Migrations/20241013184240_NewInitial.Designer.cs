@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BidFlareBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241013044657_AddCategorySeed")]
-    partial class AddCategorySeed
+    [Migration("20241013184240_NewInitial")]
+    partial class NewInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,6 +142,10 @@ namespace BidFlareBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("BidderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -154,6 +158,9 @@ namespace BidFlareBackend.Migrations
 
                     b.Property<DateTime>("ExpiredAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ImageName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MinPrice")
                         .HasColumnType("int");
@@ -209,8 +216,8 @@ namespace BidFlareBackend.Migrations
                         new
                         {
                             Id = "3",
-                            Name = "Organiser",
-                            NormalizedName = "ORGANISER"
+                            Name = "Bidder",
+                            NormalizedName = "BIDDER"
                         });
                 });
 

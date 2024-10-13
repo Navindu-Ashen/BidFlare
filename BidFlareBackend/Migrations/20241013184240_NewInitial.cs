@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BidFlareBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class AddProductAndCategory : Migration
+    public partial class NewInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -76,6 +76,8 @@ namespace BidFlareBackend.Migrations
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpiredAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MinPrice = table.Column<int>(type: "int", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BidderId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -196,7 +198,19 @@ namespace BidFlareBackend.Migrations
                 {
                     { "1", null, "Admin", "ADMIN" },
                     { "2", null, "User", "USER" },
-                    { "3", null, "Organiser", "ORGANISER" }
+                    { "3", null, "Bidder", "BIDDER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "Id", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Vehicals" },
+                    { 2, "Fashion" },
+                    { 3, "Electronics" },
+                    { 4, "Antique" },
+                    { 5, "Other" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -24,8 +24,8 @@ public class UserRolsSeed
             new IdentityRole
             {
                 Id = "3",
-                Name = "Organiser",
-                NormalizedName = "ORGANISER"
+                Name = "Bidder",
+                NormalizedName = "BIDDER"
             }
         );
     }
