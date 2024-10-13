@@ -36,7 +36,7 @@ useEffect(() => {
     const timer = setInterval(() => {
         const now = new Date();
         const difference= targetDate-now;
-
+        
         if(difference>0){
             const days = Math.floor(difference / (1000*60*60*24));
             const hours = Math.floor((difference % (1000*60*60*24))/ (1000*60*60));
@@ -66,7 +66,6 @@ const settings = {
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
-
 };
 
     return(
