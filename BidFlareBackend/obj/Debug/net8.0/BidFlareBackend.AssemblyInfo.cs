@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BidFlareBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+441b7bd87c2cb89692954e998ca852d073284135")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6dea8f22d6da5290e6e05f460e5e6ee34ae23a19")]
 [assembly: System.Reflection.AssemblyProductAttribute("BidFlareBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BidFlareBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

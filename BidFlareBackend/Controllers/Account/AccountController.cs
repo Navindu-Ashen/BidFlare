@@ -16,7 +16,6 @@ namespace BidFlareBackend.Controllers.Account
     public class AccountController(ITokenService tokenService, IAccountRepository accountRepo) : ControllerBase
     {
         private readonly ITokenService _tokenService = tokenService;
-
         private readonly IAccountRepository _accountRepo = accountRepo;
 
         [HttpPost("register")]
