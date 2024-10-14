@@ -1,18 +1,20 @@
+
+import AddBidItem from './components/AddBidItem';
 import React from 'react';
 import Dashboard from './dashboardpage.jsx'
 import Auction from './Pages/Auction.jsx';
 import Login from './Pages/Login.jsx';
-import Signup from './Pages/SignUp.jsx';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
-function App() {
+
+function App() { 
   return(
     <> 
-    
-    <Login/>
-    <Signup/>
-    
-    {/* <Login/> */}
+    <Auction/>
+    <AddBidItem/>
+    {/* <Login/> page needs to included */}
     <div>
       <h1></h1>
     </div>
