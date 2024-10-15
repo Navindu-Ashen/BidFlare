@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = () => {
+function Login() {
   const [showPassword, setShowPassword] = useState(false); // State for showing/hiding the password
 
   // Toggle the password visibility
@@ -16,6 +16,7 @@ const Login = () => {
         <div className="hidden md:block md:w-1/2">
           <img
             src="https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__" // Replace this with the actual image URL
+
             alt="Login Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
@@ -108,7 +109,7 @@ const Login = () => {
           </form>
 
           <p className="mt-4 text-gray-600 text-sm">
-            Don't have an account? <a href="/signup" className="text-blue-500">Sign up</a>
+            Don't have an account? <a href="src/Pages/SignUp.jsx" className="text-blue-500">Sign up</a>
           </p>
         </div>
       </div>

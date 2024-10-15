@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Signup = () => {
+
+function Signup () {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

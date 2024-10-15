@@ -69,17 +69,19 @@ function AddBidItem() {
     onChange={(e) => setCategory(e.target.value)} 
     required
   >
+    
    <option value="" disabled selected>Select a duration</option>
-    <option value="1 Day">1 Day</option>
-    <option value="2 Day">2 Day</option>
-    <option value="3 Day">3 Day</option>
-    <option value="4 Day">4 Day</option>
-    <option value="5 Day">5 Day</option>
-    <option value="6 Day">6 Day</option>
+    <option value="1 ">1 Day</option>
+    <option value="2 ">2 Day</option>
+    <option value="3 ">3 Day</option>
+    <option value="4 ">4 Day</option>
+    <option value="5 ">5 Day</option>
+    <option value="6 ">6 Day</option>
     <option value="1 Week">1 Week</option>
     <option value="2 Week">2 Week</option>
   </select>
 </div>
+
 
 
 
