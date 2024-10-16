@@ -11,8 +11,7 @@ function AddBidItem() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
-
-    // Create a preview URL
+    
     const previewURL = URL.createObjectURL(file);
     setImagePreview(previewURL);
   };
@@ -24,8 +23,8 @@ function AddBidItem() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md shadow-md rounded-lg p-8  ">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100" >
+      <div className="w-full max-w-md shadow-md rounded-lg p-8   ">
         <h2 className="text-2xl font-semibold mb-6 text-center">Add New Bid Item</h2> 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -49,6 +48,7 @@ function AddBidItem() {
               required
             ></textarea>
           </div>
+
 
           <div className="mb-4">
             <label className="block text-gray-700">Starting Bid ($)</label>
