@@ -11,7 +11,7 @@ function AddBidItem() {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setImage(file);
-    
+
     const previewURL = URL.createObjectURL(file);
     setImagePreview(previewURL);
   };

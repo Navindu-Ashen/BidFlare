@@ -95,20 +95,20 @@ function Signup () {
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
-                className="absolute inset-y-0 right-4 flex items-center"
+                className="absolute inset-y-0 right-4 flex items-center "
                 style={{ height: '100%' }}
               >
                 {showConfirmPassword ? (
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/159/159604.png"
                     alt="Hide password"
-                    className="w-5 h-5"
+                    className="w-5 h-5 opacity-70"
                   />
                 ) : (
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
                     alt="Show password"
-                    className="w-5 h-5"
+                    className="w-5 h-5 opacity-70"
                   />
                 )}
               </button>
