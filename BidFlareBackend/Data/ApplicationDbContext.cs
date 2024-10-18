@@ -11,6 +11,7 @@ public class ApplicationDbContext(DbContextOptions options) : IdentityDbContext<
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Bid> Bids { get; set; }
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);

@@ -4,10 +4,7 @@ using BidFlareBackend.Interfaces;
 using BidFlareBackend.Mappers;
 using BidFlareBackend.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BidFlareBackend.Controllers.Account
 {
@@ -107,6 +104,18 @@ namespace BidFlareBackend.Controllers.Account
             }
 
             return Ok(user.ToUserDto());
+        }
+
+        [HttpPost("changeRole")]
+        public async Task<IActionResult> ChangeUserRole(string userId)
+        {
+            var appUser = await _accountRepo.FindUserById(userId);
+            if (appUser == null)
+            {
+                return NotFound("User not found");
+            }
+            await _accountRepo.UpdateUserRole(appUser, "Bidder");
+            return Ok("Role changed successfully");
         }
     }
 }

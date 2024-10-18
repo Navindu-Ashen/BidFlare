@@ -1,8 +1,9 @@
 using System;
+using BidFlareBackend.Models;
 
-namespace BidFlareBackend.Models;
+namespace BidFlareBackend.Dtos.Auction;
 
-public class Product
+public class AuctionResponceDto
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
@@ -13,5 +14,5 @@ public class Product
     public string? ImageName { get; set; }
     public string BidderId { get; set; } = string.Empty;
     public int CategoryId { get; set; }
-    public List<Bid> Bids { get; set; } = [];
+    public List<BidResponceDto> Bids { get; set; } = [];
 }

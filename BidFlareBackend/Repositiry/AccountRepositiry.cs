@@ -16,6 +16,11 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
 
     public async Task<IdentityResult> AddUserRole(AppUser user, string role)
     {
+        var isInRole = await _userManager.IsInRoleAsync(user, role);
+        if (isInRole)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = $"User is already in the {role} role." });
+        }
         var roleResult = await _userManager.AddToRoleAsync(user, role);
         return roleResult;
     }
@@ -30,6 +35,17 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
     {
         var userResult = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == loginDto.UserName!.ToLower());
         return userResult;
+    }
+
+    public async Task<AppUser?> FindUserById(string id)
+    {
+        var userResultById = await _userManager.Users.FirstOrDefaultAsync(user => id == user.Id);
+        if (userResultById == null)
+        {
+            return null;
+        }
+
+        return userResultById;
     }
 
     public async Task<UserResponse?> GetUserDetails(string userId)
@@ -54,5 +70,17 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
     {
         var result = await _signInManager.CheckPasswordSignInAsync(appUser, loginDto.Password!, false);
         return result;
+    }
+
+    public async Task<IdentityResult> UpdateUserRole(AppUser user, string role)
+    {
+        var isInRole = await _userManager.IsInRoleAsync(user, role);
+        if (isInRole)
+        {
+            return IdentityResult.Failed(new IdentityError { Description = $"User is already in the {role} role." });
+        }
+        await _userManager.RemoveFromRoleAsync(user, role);
+        var roleResult = await _userManager.AddToRoleAsync(user, role);
+        return roleResult;
     }
 }
