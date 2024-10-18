@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SA Project\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj": {}
+    "E:\\Navindu\\NSBM\\Sem 2\\SA\\Projects\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj": {}
   },
   "projects": {
-    "D:\\SA Project\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj": {
+    "E:\\Navindu\\NSBM\\Sem 2\\SA\\Projects\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SA Project\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj",
+        "projectUniqueName": "E:\\Navindu\\NSBM\\Sem 2\\SA\\Projects\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj",
         "projectName": "BidFlareBackend",
-        "projectPath": "D:\\SA Project\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj",
-        "packagesPath": "C:\\Users\\Dulmin\\.nuget\\packages\\",
-        "outputPath": "D:\\SA Project\\BidFlare\\BidFlareBackend\\obj\\",
+        "projectPath": "E:\\Navindu\\NSBM\\Sem 2\\SA\\Projects\\BidFlare\\BidFlareBackend\\BidFlareBackend.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "E:\\Navindu\\NSBM\\Sem 2\\SA\\Projects\\BidFlare\\BidFlareBackend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dulmin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[8.0.4, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -103,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
