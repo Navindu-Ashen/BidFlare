@@ -1,12 +1,39 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const Login = () => {
+function Login() {
   const [showPassword, setShowPassword] = useState(false); // State for showing/hiding the password
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
 
   // Toggle the password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+    // Handle login form submission
+    const handleSubmit = async (e) => {
+      e.preventDefault(); // Prevent page reload
+      setError('');       // Clear any previous errors
+      setLoading(true);   // Start loading
+  
+      try {
+        // Send POST request to backend
+        const response = await axios.post('https://localhost:5001/api/account/login', {
+          userName: email,
+          password: password
+        });
+  
+        alert(response.data); // Notify user of successful login (or handle response accordingly)
+      } catch (error) {
+        setError('Invalid username or password'); // Show error message
+      } finally {
+        setLoading(false); // Stop loading
+      }
+    };
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
@@ -16,6 +43,7 @@ const Login = () => {
         <div className="hidden md:block md:w-1/2">
           <img
             src="https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__" // Replace this with the actual image URL
+
             alt="Login Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
@@ -62,11 +90,13 @@ const Login = () => {
           </div>
 
           {/* Login form */}
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">Email</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
               />
@@ -75,6 +105,8 @@ const Login = () => {
               <label className="block text-gray-700">Password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
               />
@@ -103,12 +135,13 @@ const Login = () => {
             <button 
               className="w-full py-2 rounded-lg relative overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:to-yellow-500 text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:rotate-1 hover:shadow-lg hover:shadow-pink-500/50 focus:outline-none focus:ring-4 focus:ring-purple-400"
             >
-              Sign In
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
+            {error && <p className="mt-4 text-red-500">{error}</p>}
           </form>
 
           <p className="mt-4 text-gray-600 text-sm">
-            Don't have an account? <a href="/signup" className="text-blue-500">Sign up</a>
+            Don't have an account? <a href="src/Pages/SignUp.jsx" className="text-blue-500">Sign up</a>
           </p>
         </div>
       </div>

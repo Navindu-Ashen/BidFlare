@@ -12,7 +12,6 @@ function AddBidItem() {
     const file = e.target.files[0];
     setImage(file);
 
-    // Create a preview URL
     const previewURL = URL.createObjectURL(file);
     setImagePreview(previewURL);
   };
@@ -24,8 +23,8 @@ function AddBidItem() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md shadow-md rounded-lg p-8  ">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100" >
+      <div className="w-full max-w-md shadow-md rounded-lg p-8   ">
         <h2 className="text-2xl font-semibold mb-6 text-center">Add New Bid Item</h2> 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -50,6 +49,7 @@ function AddBidItem() {
             ></textarea>
           </div>
 
+
           <div className="mb-4">
             <label className="block text-gray-700">Starting Bid ($)</label>
             <input
@@ -69,17 +69,19 @@ function AddBidItem() {
     onChange={(e) => setCategory(e.target.value)} 
     required
   >
+    
    <option value="" disabled selected>Select a duration</option>
-    <option value="1 Day">1 Day</option>
-    <option value="2 Day">2 Day</option>
-    <option value="3 Day">3 Day</option>
-    <option value="4 Day">4 Day</option>
-    <option value="5 Day">5 Day</option>
-    <option value="6 Day">6 Day</option>
+    <option value="1 ">1 Day</option>
+    <option value="2 ">2 Day</option>
+    <option value="3 ">3 Day</option>
+    <option value="4 ">4 Day</option>
+    <option value="5 ">5 Day</option>
+    <option value="6 ">6 Day</option>
     <option value="1 Week">1 Week</option>
     <option value="2 Week">2 Week</option>
   </select>
 </div>
+
 
 
 
