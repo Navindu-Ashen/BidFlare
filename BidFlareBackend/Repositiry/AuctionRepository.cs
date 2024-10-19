@@ -19,13 +19,13 @@ public class AuctionRepository(ApplicationDbContext context) : IAuctionRepositor
 
     public async Task<List<Product>> GetAllProducts()
     {
-        var products = await _context.Products.Include(bid => bid.Bids).ToListAsync();
+        var products = await _context.Products.Include(bid => bid.Bids).Include(category => category.Category).ToListAsync();
         return products;
     }
 
     public async Task<Product?> GetProductById(int id)
     {
-        var product = await _context.Products.Include(bid => bid.Bids).FirstOrDefaultAsync(product => product.Id == id);
+        var product = await _context.Products.Include(bid => bid.Bids).Include(category => category.Category).FirstOrDefaultAsync(product => product.Id == id);
         if (product == null)
         {
             return null;

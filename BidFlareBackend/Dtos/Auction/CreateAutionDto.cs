@@ -23,7 +23,6 @@ public class CreateAutionDto
     [Required]
     public string? ImageName { get; set; }
 
-
     [Required]
     public int CategoryId { get; set; }
 }

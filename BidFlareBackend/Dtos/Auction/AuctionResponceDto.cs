@@ -13,6 +13,6 @@ public class AuctionResponceDto
     public int MinPrice { get; set; }
     public string? ImageName { get; set; }
     public string BidderId { get; set; } = string.Empty;
-    public int CategoryId { get; set; }
-    public List<BidResponceDto> Bids { get; set; } = [];
+    public string Category { get; set; } = string.Empty;
+    public List<BidResponceDto>? Bids { get; set; }
 }

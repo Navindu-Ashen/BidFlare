@@ -33,7 +33,7 @@ public static class AuctionMapper
             ExpiredAt = product.ExpiredAt,
             MinPrice = product.MinPrice,
             ImageName = product.ImageName,
-            CategoryId = product.CategoryId,
+            Category = product.Category!.CategoryName,
             Bids = product.Bids.Select(bid => bid.ToBidResponceDto()).ToList(),
         };
     }

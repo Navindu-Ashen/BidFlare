@@ -2,17 +2,19 @@ using System;
 using BidFlareBackend.Data;
 using BidFlareBackend.Dtos.Account;
 using BidFlareBackend.Interfaces;
+using BidFlareBackend.Mappers;
 using BidFlareBackend.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace BidFlareBackend.Repositiry;
 
-public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager) : IAccountRepository
+public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, ApplicationDbContext context) : IAccountRepository
 {
     private readonly UserManager<AppUser> _userManager = userManager;
     private readonly ITokenService _tokenService = tokenService;
     private readonly SignInManager<AppUser> _signInManager = signInManager;
+    private readonly ApplicationDbContext _context = context;
 
     public async Task<IdentityResult> AddUserRole(AppUser user, string role)
     {
@@ -57,12 +59,28 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
             return null;
         }
 
+        var bids = await _context.Bids.Include(product => product.Product).Where(bid => bid.UserId == userId).ToListAsync();
+
+        if (bids == null)
+        {
+            return new UserResponse
+            {
+                UserName = user.UserName,
+                Email = user.Email,
+                Id = user.Id,
+                PhoneNumber = user.PhoneNumber,
+                MyBids = []
+            };
+        }
+        var responceBid = bids.Select(bid => bid.ToBidUserResponceDto()).ToList();
+
         return new UserResponse
         {
             UserName = user.UserName,
             Email = user.Email,
             Id = user.Id,
-            PhoneNumber = user.PhoneNumber
+            PhoneNumber = user.PhoneNumber,
+            MyBids = responceBid
         };
     }
 

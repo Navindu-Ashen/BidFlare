@@ -32,7 +32,7 @@ namespace BidFlareBackend.Controllers.Auction
 
             var product = createAutionDto.ToCreateAuctionDto(user!.Id!);
             await _auctionRepo.CreateProduct(product);
-            return Ok(product);
+            return Ok("Auction created successfully.");
         }
 
         [HttpGet]
