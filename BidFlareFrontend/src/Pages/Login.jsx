@@ -3,37 +3,36 @@ import axios from 'axios';
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false); // State for showing/hiding the password
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState(''); // Changed to 'username'
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
 
   // Toggle the password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-    // Handle login form submission
-    const handleSubmit = async (e) => {
-      e.preventDefault(); // Prevent page reload
-      setError('');       // Clear any previous errors
-      setLoading(true);   // Start loading
-  
-      try {
-        // Send POST request to backend
-        const response = await axios.post('https://localhost:5001/api/account/login', {
-          userName: email,
-          password: password
-        });
-  
-        alert(response.data); // Notify user of successful login (or handle response accordingly)
-      } catch (error) {
-        setError('Invalid username or password'); // Show error message
-      } finally {
-        setLoading(false); // Stop loading
-      }
-    };
+  // Handle login form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page reload
+    setError('');       // Clear any previous errors
+    setLoading(true);   // Start loading
+
+    try {
+      // Send POST request to backend
+      const response = await axios.get('https://localhost:5001/api/account/login', {
+        userName: username, // Changed 'email' to 'username'
+        password: password
+      });
+
+      alert('Login successful!'); // Notify user of successful login (or handle response accordingly)
+    } catch (error) {
+      setError('Invalid username or password'); // Show error message
+    } finally {
+      setLoading(false); // Stop loading
+    }
+  };
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
@@ -43,7 +42,6 @@ function Login() {
         <div className="hidden md:block md:w-1/2">
           <img
             src="https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__" // Replace this with the actual image URL
-
             alt="Login Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
@@ -92,12 +90,12 @@ function Login() {
           {/* Login form */}
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-700">Email</label>
+              <label className="block text-gray-700">Username</label> {/* Changed label */}
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
+                type="text" // Changed input type to text for username
+                value={username}
+                onChange={(e) => setUsername(e.target.value)} // Changed to setUsername
+                placeholder="Enter your username" // Updated placeholder
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
               />
             </div>
@@ -140,13 +138,13 @@ function Login() {
             {error && <p className="mt-4 text-red-500">{error}</p>}
           </form>
 
-          <p className="mt-4 text-gray-600 text-sm">
-            Don't have an account? <a href="src/Pages/SignUp.jsx" className="text-blue-500">Sign up</a>
-          </p>
+          <div className="mt-4">
+            <a href="/signup" className="text-blue-500 hover:underline">Don't have an account? Sign up</a>
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Login;
