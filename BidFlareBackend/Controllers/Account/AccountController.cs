@@ -103,7 +103,7 @@ namespace BidFlareBackend.Controllers.Account
                 return NotFound("User not found");
             }
 
-            return Ok(user.ToUserDto());
+            return Ok(user.ToUserResponceDto());
         }
 
         [HttpPost("changeRole")]
