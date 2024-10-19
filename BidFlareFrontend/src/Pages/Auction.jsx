@@ -16,11 +16,13 @@ function Auction(){
         Seconds: 0,
     });
 
-
     function handleBidSubmit(event){
         event.preventDefault();
-        alert('Bid of $${bid} has been placed ');
-        setBid('');
+        const isConfirmed = window.confirm(`Are you sure you want to place a bid of $${bid}?`);
+        if (isConfirmed) {
+            alert(`Bid of $${bid} has been placed`);
+            setBid('');
+        }
     }
    
     function handleBidChange(event){
