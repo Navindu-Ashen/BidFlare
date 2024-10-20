@@ -85,8 +85,8 @@ namespace BidFlareBackend.Controllers.Account
             });
         }
 
-        [Authorize]
-        [HttpGet]
+        [Authorize(Roles = "User")]
+        [HttpGet("user")]
         public async Task<IActionResult> GetUserDetailsAsync()
         {
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -104,6 +104,27 @@ namespace BidFlareBackend.Controllers.Account
             }
 
             return Ok(user.ToUserResponceDto());
+        }
+
+        [Authorize(Roles = "Bidder")]
+        [HttpGet("bidder")]
+        public async Task<IActionResult> GetBidderDetailsAsync()
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (currentUserId is null)
+            {
+                return BadRequest("User ID not found in the token");
+            }
+
+            var user = await _accountRepo.GetBidderDetails(currentUserId);
+
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            return Ok(user);
         }
 
         [HttpPost("changeRole")]

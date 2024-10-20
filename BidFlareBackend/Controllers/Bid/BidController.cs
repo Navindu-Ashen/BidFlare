@@ -18,7 +18,7 @@ namespace BidFlareBackend.Controllers.Bid
         private readonly IAuctionRepository _auctionRepo = auctionRepo;
 
         [HttpPost("{productId:int}")]
-        [Authorize]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateBidAsync([FromRoute] int productId, [FromBody] CreateBidDto createBidDto)
         {
             if (!ModelState.IsValid)

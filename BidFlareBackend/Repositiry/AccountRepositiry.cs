@@ -9,12 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BidFlareBackend.Repositiry;
 
-public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, ApplicationDbContext context) : IAccountRepository
+public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, ApplicationDbContext context, IAuctionRepository auctionRepo) : IAccountRepository
 {
     private readonly UserManager<AppUser> _userManager = userManager;
     private readonly ITokenService _tokenService = tokenService;
     private readonly SignInManager<AppUser> _signInManager = signInManager;
     private readonly ApplicationDbContext _context = context;
+    private readonly IAuctionRepository _auctionRepo = auctionRepo;
 
     public async Task<IdentityResult> AddUserRole(AppUser user, string role)
     {
@@ -48,6 +49,40 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
         }
 
         return userResultById;
+    }
+
+    public async Task<BidderResponce?> GetBidderDetails(string userId)
+    {
+        var user = await _userManager.FindByIdAsync(userId);
+
+        if (user == null)
+        {
+            return null;
+        }
+
+        var products = await _auctionRepo.GetAllProductsByBidderId(user.Id);
+
+        if (products == null)
+        {
+            return new BidderResponce
+            {
+                Id = user.Id,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                UserName = user.UserName,
+                MyProducts = []
+            };
+        }
+
+        return new BidderResponce
+        {
+            Id = user.Id,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                UserName = user.UserName,
+                MyProducts = products.Select(product => product.ToBidderProductResponceDto()).ToList()
+        };
+
     }
 
     public async Task<UserResponse?> GetUserDetails(string userId)
