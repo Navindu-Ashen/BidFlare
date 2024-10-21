@@ -13,6 +13,8 @@ public class Product
     public string? ImageName { get; set; }
     public string BidderId { get; set; } = string.Empty;
     public int CategoryId { get; set; }
+    public int CurrentMaxPrice { get; set; }
+    public string CurrentSelectedUser { get; set; } = string.Empty;
     public Category? Category { get; set; }
     public List<Bid> Bids { get; set; } = [];
 }

@@ -14,6 +14,8 @@ public static class BidMapper
             CreatedAt = DateTime.Now,
             ProductId = productId,
             UserId = userId,
+            IsPending = true,
+            IsWonAuction = false
         };
     }
 

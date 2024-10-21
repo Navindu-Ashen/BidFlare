@@ -44,6 +44,14 @@ namespace BidFlareBackend.Controllers.Bid
                 return BadRequest($"Minimum bid for this product is LKR {product!.MinPrice}.00");
             }
             var bidModel = createBidDto.ToBidModel(productId, userId);
+            
+            var updatedProduct = await _auctionRepo.UpdateProductBidDetailsAsync(bidModel.BidValue, userId, bidModel.ProductId);
+
+            if(updatedProduct == null)
+            {
+                return BadRequest("Somthing failed to update product");
+            }
+
             await _bidRepo.CreateBidAsync(bidModel);
 
             return Ok("Bid created successfully.");

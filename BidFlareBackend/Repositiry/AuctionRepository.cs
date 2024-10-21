@@ -43,4 +43,20 @@ public class AuctionRepository(ApplicationDbContext context) : IAuctionRepositor
     {
         return _context.Products.AnyAsync(stock => stock.Id == id);
     }
+
+    public async Task<Product?> UpdateProductBidDetailsAsync(int bidValue, string userId, int productId)
+    {
+        var existingProduct = await _context.Products.FirstOrDefaultAsync(product => product.Id == productId);
+        
+        if(existingProduct == null)
+        {
+            return null;
+        }
+
+        existingProduct.CurrentMaxPrice = bidValue;
+        existingProduct.CurrentSelectedUser = userId;
+
+        await _context.SaveChangesAsync();
+        return existingProduct;
+    }
 }
