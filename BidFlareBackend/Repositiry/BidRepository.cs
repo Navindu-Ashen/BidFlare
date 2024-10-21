@@ -16,5 +16,16 @@ public class BidRepository(ApplicationDbContext context) : IBidRepository
         return bidContent;
     }
 
-    
+    public async Task<Bid?> DeleteBidAsync(int bidId)
+    {
+        var bidModel = await _context.Bids.FirstOrDefaultAsync(bid => bid.Id == bidId);
+
+        if (bidModel == null)
+        {
+            return null;
+        }
+        _context.Bids.Remove(bidModel);
+        await _context.SaveChangesAsync();
+        return bidModel;
+    }
 }

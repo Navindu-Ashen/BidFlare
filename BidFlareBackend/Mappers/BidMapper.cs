@@ -27,4 +27,16 @@ public static class BidMapper
             UserId = bid.UserId
         };
     }
+
+    public static Bid ToBidModelFromBidUserRespoceDto(this BidUserResponceDto bidUserResponceDto, string userId)
+    {
+        return new Bid
+        {
+            Id = bidUserResponceDto.Id,
+            BidValue = bidUserResponceDto.BidValue,
+            CreatedAt = bidUserResponceDto.CreatedAt,
+            ProductId = bidUserResponceDto.ProductId,
+            UserId = userId
+        };
+    }
 }

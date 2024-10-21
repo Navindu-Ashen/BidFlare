@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using BidFlareBackend.Data;
 using BidFlareBackend.Dtos.Auction;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Mappers;
@@ -12,10 +13,11 @@ namespace BidFlareBackend.Controllers.Bid
 {
     [Route("api/bid")]
     [ApiController]
-    public class BidController(IBidRepository bidRepo, IAuctionRepository auctionRepo) : ControllerBase
+    public class BidController(IBidRepository bidRepo, IAuctionRepository auctionRepo, IAccountRepository accountRepo) : ControllerBase
     {
         private readonly IBidRepository _bidRepo = bidRepo;
         private readonly IAuctionRepository _auctionRepo = auctionRepo;
+        private readonly IAccountRepository _accountRepo = accountRepo;
 
         [HttpPost("{productId:int}")]
         [Authorize(Roles = "User")]
@@ -45,6 +47,43 @@ namespace BidFlareBackend.Controllers.Bid
             await _bidRepo.CreateBidAsync(bidModel);
 
             return Ok("Bid created successfully.");
+        }
+
+        [HttpDelete("{bidId:int}")]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> DeleteBidAsync([FromRoute] int bidId)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (userId == null)
+            {
+                return BadRequest("User Id not found");
+            }
+
+            var userResult = await _accountRepo.GetUserDetails(userId);
+
+            if (userResult == null)
+            {
+                return BadRequest("User not found");
+            }
+
+            var found = userResult.MyBids.FirstOrDefault(bid => bid.Id == bidId);
+
+            if (found == null)
+            {
+                return BadRequest("Delete failed. User can only delete own bids only. Make sure you have entered the correct product ID.");
+            }
+
+            var delete = await _bidRepo.DeleteBidAsync(bidId);
+            if (delete == null)
+            {
+                return BadRequest("Delete faild. Database error.");
+            }
+
+            return Ok("Bid deleted successfully.");
         }
     }
 }
