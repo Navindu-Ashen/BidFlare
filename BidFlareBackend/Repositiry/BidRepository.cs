@@ -28,4 +28,16 @@ public class BidRepository(ApplicationDbContext context) : IBidRepository
         await _context.SaveChangesAsync();
         return bidModel;
     }
+
+    public async Task<Bid?> GetBidAsync(int bidId)
+    {
+        var bidModel = await _context.Bids.FirstOrDefaultAsync(bid => bid.Id == bidId);
+
+        if (bidModel == null)
+        {
+            return null;
+        }
+
+        return bidModel;
+    }
 }
