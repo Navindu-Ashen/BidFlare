@@ -40,4 +40,15 @@ public class BidRepository(ApplicationDbContext context) : IBidRepository
 
         return bidModel;
     }
+
+    public async Task<List<Bid>?> GetBisdByProductIdAsync(int productId)
+    {
+        var bids = await _context.Bids.Where(bid => bid.ProductId == productId).ToListAsync();
+        if(bids == null)
+        {
+            return null;
+        }
+        
+        return bids;
+    }
 }

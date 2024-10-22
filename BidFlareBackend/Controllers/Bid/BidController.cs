@@ -48,11 +48,11 @@ namespace BidFlareBackend.Controllers.Bid
                 return BadRequest($"Current aution is LKR {product!.CurrentMaxPrice}.00. Please enter higher value.");
             }
             var bidModel = createBidDto.ToBidModel(productId, userId);
-            
+
 
             var updatedProduct = await _auctionRepo.UpdateProductBidDetailsAsync(createBidDto.BidValue, userId, productId);
 
-            if(updatedProduct == null)
+            if (updatedProduct == null)
             {
                 return BadRequest("Somthing failed to update product");
             }
@@ -93,6 +93,24 @@ namespace BidFlareBackend.Controllers.Bid
             if (delete == null)
             {
                 return BadRequest("Delete faild. Database error.");
+            }
+
+            var pastBids = await _bidRepo.GetBisdByProductIdAsync(found.ProductId);
+
+            if (pastBids == null)
+            {
+                await _auctionRepo.UpdateProductBidDetailsAsync(0, "", found.ProductId);
+            }
+            else
+            {
+                if (pastBids.Count == 0)
+                {
+                    await _auctionRepo.UpdateProductBidDetailsAsync(0, "", found.ProductId);
+                }
+                else
+                {
+                    await _auctionRepo.UpdateProductBidDetailsAsync(pastBids[^1].BidValue, pastBids[^1].UserId, found.ProductId);
+                }
             }
 
             return Ok("Bid deleted successfully.");

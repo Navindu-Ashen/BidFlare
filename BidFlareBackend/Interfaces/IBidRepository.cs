@@ -8,4 +8,5 @@ public interface IBidRepository
     public Task<Bid> CreateBidAsync(Bid bidContent);
     public Task<Bid?> DeleteBidAsync(int bidId);
     public Task<Bid?> GetBidAsync(int bidId);
+    public Task<List<Bid>?> GetBisdByProductIdAsync(int productId);
 }
