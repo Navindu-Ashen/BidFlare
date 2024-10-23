@@ -9,6 +9,7 @@ import Signup from './Pages/SignUp.jsx';
 import AddBidItem from './components/AddBidItem';
 import Navbar from './Pages/Navbar.jsx';
 import Auction from './Pages/Auction.jsx';
+import Profile from './Pages/profile.jsx';
 
 function App() { 
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/add-bid" element={<AddBidItem />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/auction" element={<Auction />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
