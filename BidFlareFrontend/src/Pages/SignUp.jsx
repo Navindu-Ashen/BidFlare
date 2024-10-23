@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 
 function Signup () {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+
 
   // Toggle password visibility
   const togglePasswordVisibility = () => {
@@ -13,6 +23,34 @@ function Signup () {
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
+
+ // Handle form submission
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError('');
+  setLoading(true);
+
+  if (password !== confirmPassword) {
+    setError('Passwords do not match');
+    setLoading(false);
+    return;
+  }
+
+  try {
+    const response = await axios.post('https://localhost:5116/api/account/register', {
+      userName: username,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password
+    });
+
+    alert('Signup successful');
+  } catch (error) {
+    setError('Signup failed');
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
@@ -27,13 +65,15 @@ function Signup () {
             />
           </div>
           <h1 className="text-2xl font-semibold mb-6">Welcome to bidFlare</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="block text-gray-700">User Name</label>
               <input
                 type="text"
                 placeholder="Enter your username"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -42,6 +82,8 @@ function Signup () {
                 type="tel"
                 placeholder="Enter your phone number"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -50,8 +92,11 @@ function Signup () {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
             {/* Password Field with Eye Button */}
             <div className="mb-4 relative">
               <label className="block text-gray-700">Password</label>
@@ -59,7 +104,10 @@ function Signup () {
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
+
               {/* Eye icon button for password field */}
               <button
                 type="button"
@@ -90,7 +138,10 @@ function Signup () {
                 type={showConfirmPassword ? 'text' : 'password'}
                 placeholder="Confirm your password"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
+
               {/* Eye icon button for confirm password field */}
               <button
                 type="button"
