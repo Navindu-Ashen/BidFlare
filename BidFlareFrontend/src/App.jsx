@@ -1,14 +1,15 @@
-import Dashboard from './dashboardpage.jsx'
+import Navbar from './Component/navbar.jsx';
+import Homepage from './Pages/Homepage.jsx';
+import Dashboard from './dashboardpage.jsx';
 
 
 function App() {
   return(
     <> 
+    <Navbar/>
+    <Homepage></Homepage>
     
-    <Homepage/>
-    <div>
-      <h1></h1>
-    </div>
+
     </>
     
   );
