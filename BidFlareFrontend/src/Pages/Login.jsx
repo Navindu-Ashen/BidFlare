@@ -21,7 +21,7 @@ function Login() {
 
     try {
       // Send POST request to backend
-      const response = await axios.get('https://localhost:5001/api/account/login', {
+      const response = await axios.post('http://localhost:5116/api/account/login', {
         userName: username, // Changed 'email' to 'username'
         password: password
       });
