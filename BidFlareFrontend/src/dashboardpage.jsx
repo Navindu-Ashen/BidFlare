@@ -1,4 +1,5 @@
 import './dashboardpage.css'
+import { Route, Routes } from 'react-router-dom';
 
 function Dashboard(){
     return(
@@ -59,9 +60,9 @@ function Dashboard(){
                         <p class="status"><span class="percentage">5%</span> Completed</p>
                     </div>
                 </div>
-                <Link to= "">
+                
                 <button class="create-bid">Create New Bid</button>
-                </Link>
+                
             </section>
         </div>
     </div>

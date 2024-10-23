@@ -19,7 +19,8 @@ function Login() {
     setError('');       // Clear any previous errors
     setLoading(true);   // Start loading
 
-    try {
+    try  
+    { console.log(username,password);
       // Send POST request to backend
       const response = await axios.post('http://localhost:5116/api/account/login', {
         userName: username, // Changed 'email' to 'username'

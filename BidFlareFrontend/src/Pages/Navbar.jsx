@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -19,11 +20,16 @@ const Navbar = () => {
         <li className="text-white cursor-pointer">Tech</li>
       </ul>
       <div className="flex gap-3">
+        <Link to = "/login" >
         <button className="bg-green-500 text-white py-2 px-4 rounded cursor-pointer">Login</button>
+        </Link>
+        <Link to = "/signup">
         <button className="bg-green-600 text-white py-2 px-4 rounded cursor-pointer">Sign Up</button>
+        </Link>
       </div>
     </nav>
   );
 }
+
 
 export default Navbar;
