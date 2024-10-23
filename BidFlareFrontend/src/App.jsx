@@ -1,14 +1,15 @@
-
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AddBidItem from './components/AddBidItem';
-import Dashboard from './dashboardpage.jsx';
-import Auction from './Pages/Auction.jsx';
-import Login from './Pages/Login.jsx';
-import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import Signup from './Pages/SignUp.jsx';
+import "slick-carousel/slick/slick.css"; 
 
+
+import Dashboard from './dashboardpage.jsx';
+import Login from './Pages/Login.jsx';
+import Signup from './Pages/SignUp.jsx';
+import AddBidItem from './components/AddBidItem';
+import Navbar from './Pages/Navbar.jsx';
+import Auction from './Pages/Auction.jsx';
 
 
 function App() { 
@@ -26,6 +27,7 @@ function App() {
     <Signup/>
     <Auction/>
     <AddBidItem/>
+    <Navbar/>
     {/* <Login/> page needs to included */}
     <div>
       
