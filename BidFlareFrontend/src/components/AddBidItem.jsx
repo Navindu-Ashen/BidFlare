@@ -23,12 +23,17 @@ function AddBidItem() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100" >
-      <div className="w-full max-w-md shadow-md rounded-lg p-8   ">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Add New Bid Item</h2> 
+    <div
+    className="flex justify-center items-center min-h-screen bg-cover bg-center"
+    style={{
+      backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__)',
+    }}
+  >
+      <div className="w-full max-w-md shadow-md rounded-lg p-10 m-10  pb-20  bg-blue-500">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-white">Add New Bid Item</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700">Item Name</label>
+            <label className="block text-white">Item Name</label>
             <input
               type="text"
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -39,7 +44,7 @@ function AddBidItem() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Description</label>
+            <label className="block text-white">Description</label>
             <textarea
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
               rows="3"
@@ -49,9 +54,8 @@ function AddBidItem() {
             ></textarea>
           </div>
 
-
           <div className="mb-4">
-            <label className="block text-gray-700">Starting Bid ($)</label>
+            <label className="block text-white">Starting Bid ($)</label>
             <input
               type="number"
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -59,40 +63,29 @@ function AddBidItem() {
               onChange={(e) => setStartingBid(e.target.value)}
               required
             />
+          </div>
 
+          <div className="mb-4">
+            <label className="block text-white">Expire within</label>
+            <select
+              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+              onChange={(e) => setExpirationDate(e.target.value)}
+              required
+            >
+              <option value="" disabled selected>Select a duration</option>
+              <option value="1">1 Day</option>
+              <option value="2">2 Days</option>
+              <option value="3">3 Days</option>
+              <option value="4">4 Days</option>
+              <option value="5">5 Days</option>
+              <option value="6">6 Days</option>
+              <option value="1 Week">1 Week</option>
+              <option value="2 Weeks">2 Weeks</option>
+            </select>
+          </div>
 
-
-<div className="mb-4">
-  <label className="block text-gray-700">Expire within</label>
-  <select
-    className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-    onChange={(e) => setCategory(e.target.value)} 
-    required
-  >
-    
-   <option value="" disabled selected>Select a duration</option>
-    <option value="1 ">1 Day</option>
-    <option value="2 ">2 Day</option>
-    <option value="3 ">3 Day</option>
-    <option value="4 ">4 Day</option>
-    <option value="5 ">5 Day</option>
-    <option value="6 ">6 Day</option>
-    <option value="1 Week">1 Week</option>
-    <option value="2 Week">2 Week</option>
-  </select>
-</div>
-
-
-
-
-
-
-      </div>
           <div className="mb-6">
-            <label className="block text-gray-700 mb-2">Upload Image</label>
-
-
-            {/* Created  Custom File Upload Button */}
+            <label className="block text-white mb-2">Upload Image</label>
             <div className="flex items-center justify-center w-full">
               <label
                 htmlFor="file-upload"
@@ -122,9 +115,6 @@ function AddBidItem() {
                       ></path>
                     </svg>
                     <p className="mb-2 text-sm text-gray-500">
-
-                    
-
                       <span className="font-semibold">Click to upload</span> or drag and drop
                     </p>
                     <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (max. 5MB)</p>
@@ -142,13 +132,9 @@ function AddBidItem() {
             </div>
           </div>
 
-
-
-          
-
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Add Item
           </button>

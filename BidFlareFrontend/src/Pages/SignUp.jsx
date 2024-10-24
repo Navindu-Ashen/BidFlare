@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function Signup() {
+function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [username, setUsername] = useState("");
@@ -65,7 +66,13 @@ function Signup() {
   return (
     <div className="flex h-screen items-center justify-center bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg flex w-full max-w-4xl">
-        {/* Left side with the form */}
+        <div className="hidden md:block md:w-1/2">
+          <img
+            src="https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__"
+            alt="Signup Illustration"
+            className="w-full h-full object-cover rounded-l-lg"
+          />
+        </div>
         <div className="p-8 w-full md:w-1/2">
           <div className="mb-6">
             <img
@@ -77,23 +84,13 @@ function Signup() {
           <h1 className="text-2xl font-semibold mb-6">Welcome to bidFlare</h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-gray-700">User Name</label>
+              <label className="block text-gray-700">Username</label>
               <input
                 type="text"
                 placeholder="Enter your username"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700">Phone Number</label>
-              <input
-                type="tel"
-                placeholder="Enter your phone number"
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -106,8 +103,16 @@ function Signup() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
-            {/* Password Field with Eye Button */}
+            <div className="mb-4">
+              <label className="block text-gray-700">Phone Number</label>
+              <input
+                type="tel"
+                placeholder="Enter your phone number"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+            </div>
             <div className="mb-4 relative">
               <label className="block text-gray-700">Password</label>
               <input
@@ -117,31 +122,15 @@ function Signup() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-
-              {/* Eye icon button for password field */}
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
                 className="absolute inset-y-0 right-4 flex items-center"
                 style={{ height: "100%" }}
               >
-                {showPassword ? (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/159/159604.png"
-                    alt="Hide password"
-                    className="w-5 h-5"
-                  />
-                ) : (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
-                    alt="Show password"
-                    className="w-5 h-5"
-                  />
-                )}
+                {showPassword ? 'Hide' : 'Show'}
               </button>
             </div>
-
-            {/* Confirm Password Field with Eye Button */}
             <div className="mb-4 relative">
               <label className="block text-gray-700">Confirm Password</label>
               <input
@@ -151,36 +140,22 @@ function Signup() {
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
-
-              {/* Eye icon button for confirm password field */}
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
                 className="absolute inset-y-0 right-4 flex items-center "
                 style={{ height: "100%" }}
               >
-                {showConfirmPassword ? (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/159/159604.png"
-                    alt="Hide password"
-                    className="w-5 h-5 opacity-70"
-                  />
-                ) : (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
-                    alt="Show password"
-                    className="w-5 h-5 opacity-70"
-                  />
-                )}
+                {showConfirmPassword ? 'Hide' : 'Show'}
               </button>
             </div>
-
-            <div className="mb-6">
-              <input type="checkbox" className="mr-2" />
-              <label>I agree to the terms and conditions</label>
-            </div>
-            <button className="w-full py-2 rounded-lg relative overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:to-yellow-500 text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:rotate-1 hover:shadow-lg hover:shadow-pink-500/50 focus:outline-none focus:ring-4 focus:ring-purple-400">
-              Sign Up
+            {error && <p className="text-red-500">{error}</p>}
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+              disabled={loading}
+            >
+              {loading ? 'Loading...' : 'Signup'}
             </button>
           </form>
           <p className="mt-4 text-gray-600 text-sm">
@@ -202,6 +177,7 @@ function Signup() {
       </div>
     </div>
   );
+}
 }
 
 export default Signup;
