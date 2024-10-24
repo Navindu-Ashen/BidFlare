@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import authService from "../Services/authService";
 
 function Signup() {
-function Signup() {
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [username, setUsername] = useState("");
@@ -178,6 +179,6 @@ function Signup() {
     </div>
   );
 }
-}
+
 
 export default Signup;
