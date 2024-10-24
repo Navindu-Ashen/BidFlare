@@ -10,6 +10,9 @@ const register = async (username, email, phoneNumber, password) => {
       phoneNumber: phoneNumber,
       password: password,
     });
+    const { token } = response.data;
+    localStorage.setItem('token', token); // Store the JWT
+
     return response.data;
   } catch (error) {
     throw error.response ? error.response.data : new Error('Network error');
