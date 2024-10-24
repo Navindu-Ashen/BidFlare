@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import authService from '../Services/authService';
 
 function Signup() {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,16 +32,10 @@ function Signup() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5116/api/account/register', {
-        userName: username,
-        email: email,
-        phoneNumber: phoneNumber,
-        password: password
-      });
-
+      await authService.register(username, email, phoneNumber, password);
       alert('Signup successful');
     } catch (error) {
-      setError('Signup failed');
+      setError(error.message || 'Signup failed');
     } finally {
       setLoading(false);
     }
