@@ -11,6 +11,8 @@ public class AuctionResponceDto
     public DateTime CreatedAt { get; set; }
     public DateTime ExpiredAt { get; set; }
     public int MinPrice { get; set; }
+    public int CurrentMaxPrice { get; set; }
+    public string CurrentSelectedUser { get; set; } = string.Empty;
     public string? ImageName { get; set; }
     public string BidderId { get; set; } = string.Empty;
     public string Category { get; set; } = string.Empty;

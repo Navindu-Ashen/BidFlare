@@ -9,10 +9,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BidFlareBackend.Repositiry;
 
-public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, ApplicationDbContext context, IAuctionRepository auctionRepo) : IAccountRepository
+public class AccountRepositiry(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ApplicationDbContext context, IAuctionRepository auctionRepo) : IAccountRepository
 {
     private readonly UserManager<AppUser> _userManager = userManager;
-    private readonly ITokenService _tokenService = tokenService;
     private readonly SignInManager<AppUser> _signInManager = signInManager;
     private readonly ApplicationDbContext _context = context;
     private readonly IAuctionRepository _auctionRepo = auctionRepo;
@@ -49,6 +48,18 @@ public class AccountRepositiry(UserManager<AppUser> userManager, ITokenService t
         }
 
         return userResultById;
+    }
+
+    public async Task<IList<AppUser>?> GetAllBiddersAsync()
+    {
+        var bidders = await _userManager.GetUsersInRoleAsync("Bidder");
+        return bidders;
+    }
+
+    public async Task<IList<AppUser>?> GetAllUsersAsync()
+    {
+        var users = await _userManager.GetUsersInRoleAsync("User");
+        return users;
     }
 
     public async Task<BidderResponce?> GetBidderDetails(string userId)

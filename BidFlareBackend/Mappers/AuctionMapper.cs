@@ -32,6 +32,8 @@ public static class AuctionMapper
             CreatedAt = product.CreatedAt,
             ExpiredAt = product.ExpiredAt,
             MinPrice = product.MinPrice,
+            CurrentMaxPrice = product.CurrentMaxPrice,
+            CurrentSelectedUser = product.CurrentSelectedUser,
             ImageName = product.ImageName,
             Category = product.Category!.CategoryName,
             Bids = product.Bids.Select(bid => bid.ToBidResponceDto()).ToList(),

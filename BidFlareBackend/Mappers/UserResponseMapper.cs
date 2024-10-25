@@ -42,7 +42,9 @@ public static class UserResponseMapper
             CreatedAt = product.CreatedAt,
             ExpiredAt = product.ExpiredAt,
             ImageName = product.ImageName,
-            MinPrice = product.MinPrice
+            MinPrice = product.MinPrice,
+            CurrentMaxPrice = product.CurrentMaxPrice,
+            CurrentSelectedUserId = product.CurrentSelectedUser
         };
     }
 }
