@@ -1,15 +1,35 @@
-import Navbar from './Component/navbar.jsx';
-import Homepage from './Pages/Homepage.jsx';
-import Dashboard from './dashboardpage.jsx';
+
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AddBidItem from './components/AddBidItem';
+import Dashboard from './dashboardpage.jsx'
+import Auction from './Pages/Auction.jsx';
+import Login from './Pages/Login.jsx';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Signup from './Pages/SignUp.jsx';
 
 
-function App() {
+
+function App() { 
   return(
     <> 
-    <Navbar/>
-    <Homepage></Homepage>
-    
-
+    <BrowserRouter>
+    <Routes>
+      <Route path= "/" element = {<Dashboard/>} />
+      <Route path= "/login" element = {<Login/>} />
+      <Route path= "/signup" element = {<Signup/>} ></Route>
+    </Routes>
+    </BrowserRouter>
+    <Login/>
+    <Signup/>
+    <Auction/>
+    <AddBidItem/>
+    {/* <Login/> page needs to included */}
+    <div>
+      
+      
+    </div>
     </>
     
   );
