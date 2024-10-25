@@ -1,6 +1,6 @@
 import React from "react";
+import { FaLinkedin, FaFacebook, FaInstagram, FaEnvelope } from "react-icons/fa";
 import "./Footer.css";
-
 
 const Footer = () => {
   return (
@@ -8,49 +8,47 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-left">
           <h2>BidFlare</h2>
-          
-
           <div className="resources">
-            <h4>Resource</h4>
             <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Site Map</a></li>
+              <li><a href="#">Feedback</a></li>
+              <li><a href="#">Portal Policies</a></li>
+              <li><a href="#">Bidders Manual Kit</a></li>
               <li><a href="#">Help For Contractors</a></li>
               <li><a href="#">Information About DSC</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Feedback</a></li>
-              <li><a href="#">Bidders Manual Kit</a></li>
-              <li><a href="#">Site Map</a></li>
-              <li><a href="#">Portal Policies</a></li>
             </ul>
           </div>
+
+          
         </div>
 
         <div className="footer-center">
           <h4>Contact Us</h4>
           <p>📞 0120-4001 002 / 0120-4001 005 / 0120-627787</p>
-          <p>📧 eAuction@gmail.com</p>
+          <p>📧 contact.bidflare@gmail.com</p>
         </div>
 
         <div className="footer-right">
           <div className="qr-code">
-            {/* Add your QR code image here */}
-            <img src="path_to_your_qr_code_image.png" alt="QR Code" />
+            <img src="src/image/logo.png" alt="BidFlare Logo" />
+            <div className="social-icons">
+            <a href="https://www.linkedin.com" target="_blank"  aria-label="LinkedIn"><FaLinkedin className="social-icon" /></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><FaFacebook className="social-icon" /></a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><FaInstagram className="social-icon" /></a>
+            <a href="mailto:contact.bidflare@gmail.com" target="_blank" aria-label="Email"><FaEnvelope className="social-icon" /></a>
           </div>
-          <div className="social-icons">
-            {/* Add social media icons */}
-            <a href="#"><img src="linkedin-icon.png" alt="LinkedIn" /></a>
-            <a href="#"><img src="facebook-icon.png" alt="Facebook" /></a>
-            <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
-            <a href="#"><img src="email-icon.png" alt="Email" /></a>
           </div>
+          
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>© Copyright 2023 ISRO. All Rights Reserved</p>
+        <p>© Copyright 2023 BidFlare. All Rights Reserved</p>
       </div>
+      
     </footer>
   );
 };
-
 
 export default Footer;
