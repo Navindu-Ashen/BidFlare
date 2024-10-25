@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from '../AuthContext.jsx';
 
 function Login() {
-  const [showPassword, setShowPassword] = useState(false); // State for showing/hiding the password
-  const [username, setUsername] = useState(""); // Changed to 'username'
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Toggle the password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  // Handle login form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload
-    setError(""); // Clear any previous errors
-    setLoading(true); // Start loading
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
     try {
       const response = await fetch("http://localhost:5116/api/account/login", {
@@ -38,30 +39,28 @@ function Login() {
         throw new Error(data.message || "Login failed");
       }
 
-      // Store token in localStorage
       if (data.token) {
-        localStorage.setItem("token", data.token);
-      }else{
+        login(data.token); // Use the login function from context
+        navigate("/");
+      } else {
         console.log("token not found");
+        throw new Error("Token not found in response");
       }
 
-      console.log("login successful");
-
-      alert("Login successful!"); // Notify user of successful login (or handle response accordingly)
     } catch (error) {
-      setError("Invalid username or password"); // Show error message
+      setError("Invalid username or password");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen items-center justify-center bg-gray-100 mt-5 mb-5">
       <div className="bg-white shadow-lg rounded-lg flex w-full max-w-4xl">
         {/* Left side with an image */}
         <div className="hidden md:block md:w-1/2">
           <img
-            src="https://s3-alpha-sig.figma.com/img/8359/bacf/6ae32cbc6a31983abb26574c0a317d77?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=cUuZpxXqZf1Tr~en8Ydy2w~m7H6gmiIeeHzb1FLQyW0N7amBVsoLTb0vKAvc4qRQF4SV5UNq2JSo9SqJ~GI1nwKwjaZEV7oeLAuNPnD8~B3VYeq~Glwx7YtQP3XecS86QasQEENRZM8E0qvTz0XLaPZaFj-rkePJiJi~Rx9UKsf2ZE0neuRdyMEZc1~YWMTCgSHfmDwq3bnSk-0RVJ--tSIW3jFmtGTXEMAZqJcUoVtec9rPBp9qc2fXG~5AGF30OFUYY0KhduNRMBIaHTNxMsrLThwt7MHrmOFbN-T4SrEWJ1fkKa3qoCqkHgjZycaHunWmVugnS92REv91E~fV9Q__" // Replace this with the actual image URL
+            src="https://helpinghand.com.au/wp-content/uploads/2021/11/silent-auction.webp" // Replace this with the actual image URL
             alt="Login Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
@@ -128,27 +127,7 @@ function Login() {
                 placeholder="Enter your password"
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none"
               />
-              {/* Eye icon button to toggle password visibility */}
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-4 flex items-center"
-                style={{ height: "100%" }} // Ensure the icon button is vertically centered
-              >
-                {showPassword ? (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/565/565655.png"
-                    alt="Hide password"
-                    className="w-5 h-5"
-                  />
-                ) : (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/159/159604.png"
-                    alt="Show password"
-                    className="w-5 h-5"
-                  />
-                )}
-              </button>
+              
             </div>
             <button className="w-full py-2 rounded-lg relative overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:to-yellow-500 text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:rotate-1 hover:shadow-lg hover:shadow-pink-500/50 focus:outline-none focus:ring-4 focus:ring-purple-400">
               {loading ? "Signing in..." : "Sign In"}
