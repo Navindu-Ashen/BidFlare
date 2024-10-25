@@ -81,17 +81,19 @@ public class AccountRepositiry(UserManager<AppUser> userManager, SignInManager<A
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 UserName = user.UserName,
-                MyProducts = []
+                MyCurrentProducts = [],
+                MyAllProducts = []
             };
         }
 
         return new BidderResponce
         {
             Id = user.Id,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                UserName = user.UserName,
-                MyProducts = products.Select(product => product.ToBidderProductResponceDto()).ToList()
+            Email = user.Email,
+            PhoneNumber = user.PhoneNumber,
+            UserName = user.UserName,
+            MyCurrentProducts = products.Where(product => product.IsAuctionExpired == false).Select(product => product.ToBidderProductResponceDto()).ToList(),
+            MyAllProducts = products.Select(product => product.ToBidderProductResponceDto()).ToList(),
         };
 
     }
@@ -105,7 +107,10 @@ public class AccountRepositiry(UserManager<AppUser> userManager, SignInManager<A
             return null;
         }
 
-        var bids = await _context.Bids.Include(product => product.Product).Where(bid => bid.UserId == userId).ToListAsync();
+        var bids = await _context.Bids
+        .Include(product => product.Product)
+        .Where(bid => bid.UserId == userId && bid.IsWonAuction == true && bid.IsPaymentSuccess == false || (bid.UserId == userId && bid.IsPending == true))
+        .ToListAsync();
 
         if (bids == null)
         {

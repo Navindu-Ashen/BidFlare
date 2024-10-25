@@ -44,11 +44,32 @@ public class BidRepository(ApplicationDbContext context) : IBidRepository
     public async Task<List<Bid>?> GetBisdByProductIdAsync(int productId)
     {
         var bids = await _context.Bids.Where(bid => bid.ProductId == productId).ToListAsync();
-        if(bids == null)
+        if (bids == null)
         {
             return null;
         }
-        
+
         return bids;
+    }
+
+    public async Task MarkBidAsWonAsync(int bidValue)
+    {
+        var existingBid = await _context.Bids.FirstOrDefaultAsync(bid => bid.BidValue == bidValue);
+
+        existingBid!.IsWonAuction = true;
+
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task MarkBidExpiredAsync(int productId)
+    {
+        var existingBids = await _context.Bids.Where(bid => bid.ProductId == productId).ToListAsync();
+
+        foreach (var existingBid in existingBids)
+        {
+            existingBid!.IsPending = false;
+        }
+        
+        await _context.SaveChangesAsync();
     }
 }

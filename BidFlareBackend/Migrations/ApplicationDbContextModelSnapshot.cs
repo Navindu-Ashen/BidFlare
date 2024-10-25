@@ -101,6 +101,9 @@ namespace BidFlareBackend.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsPaymentSuccess")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsPending")
                         .HasColumnType("bit");
 
@@ -201,6 +204,9 @@ namespace BidFlareBackend.Migrations
 
                     b.Property<string>("ImageName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAuctionExpired")
+                        .HasColumnType("bit");
 
                     b.Property<int>("MinPrice")
                         .HasColumnType("int");

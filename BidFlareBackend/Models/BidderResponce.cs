@@ -9,5 +9,7 @@ public class BidderResponce
     public string? UserName { get; set; }
     public string? Email { get; set; }
     public string? PhoneNumber { get; set; }
-    public List<BidderProductResponceDto> MyProducts { get; set; } = [];
+    public List<BidderProductResponceDto> MyCurrentProducts { get; set; } = [];
+    public List<BidderProductResponceDto> MyAllProducts { get; set; } = [];
+
 }

@@ -15,6 +15,7 @@ public class Product
     public int CategoryId { get; set; }
     public int CurrentMaxPrice { get; set; }
     public string CurrentSelectedUser { get; set; } = string.Empty;
+    public bool IsAuctionExpired { get; set; }
     public Category? Category { get; set; }
     public List<Bid> Bids { get; set; } = [];
 }

@@ -12,4 +12,7 @@ public interface IAuctionRepository
     Task<Product?> GetProductById(int id);
     Task<bool> IsProductExistsAsync(int id);
     Task<Product?> UpdateProductBidDetailsAsync(int bidValue, string userId, int productId);
+    Task<List<Product>> GetExpriedAuctionsAsync();
+    Task<Product?> MarkAuctionAsExpiredAsync(int productId);
+
 }

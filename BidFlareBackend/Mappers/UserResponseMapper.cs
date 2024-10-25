@@ -27,7 +27,10 @@ public static class UserResponseMapper
             Id = bid.Id,
             BidValue = bid.BidValue,
             CreatedAt = bid.CreatedAt,
-            ProductId = bid.ProductId
+            ProductId = bid.ProductId,
+            IsWon = bid.IsWonAuction,
+            IsAuctionPending = bid.IsPending,
+            IsPaymentSuccess = bid.IsPaymentSuccess
         };
     }
 

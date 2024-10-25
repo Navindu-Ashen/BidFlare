@@ -19,7 +19,7 @@ public class AuctionRepository(ApplicationDbContext context) : IAuctionRepositor
 
     public async Task<List<Product>> GetAllProducts()
     {
-        var products = await _context.Products.Include(bid => bid.Bids).Include(category => category.Category).ToListAsync();
+        var products = await _context.Products.Include(bid => bid.Bids).Include(category => category.Category).Where(product => product.IsAuctionExpired == false).ToListAsync();
         return products;
     }
 
@@ -27,6 +27,13 @@ public class AuctionRepository(ApplicationDbContext context) : IAuctionRepositor
     {
         var products = await _context.Products.Include(bid => bid.Bids).Include(category => category.Category).Where(product => product.BidderId == bidderId).ToListAsync();
         return products;
+    }
+
+    public async Task<List<Product>> GetExpriedAuctionsAsync()
+    {
+        return await _context.Products
+                .Where(product => product.ExpiredAt < DateTime.Now && product.IsAuctionExpired == false)
+                .ToListAsync();
     }
 
     public async Task<Product?> GetProductById(int id)
@@ -42,6 +49,21 @@ public class AuctionRepository(ApplicationDbContext context) : IAuctionRepositor
     public Task<bool> IsProductExistsAsync(int id)
     {
         return _context.Products.AnyAsync(stock => stock.Id == id);
+    }
+
+    public async Task<Product?> MarkAuctionAsExpiredAsync(int productId)
+    {
+        var existingProduct = await _context.Products.FirstOrDefaultAsync(product => product.Id == productId);
+        
+        if(existingProduct == null)
+        {
+            return null;
+        }
+
+        existingProduct.IsAuctionExpired = true;
+
+        await _context.SaveChangesAsync();
+        return existingProduct;
     }
 
     public async Task<Product?> UpdateProductBidDetailsAsync(int bidValue, string userId, int productId)

@@ -1,3 +1,4 @@
+using Backend.Services;
 using BidFlareBackend.Data;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Models;
@@ -101,6 +102,7 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepositiry>();
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 builder.Services.AddScoped<IBidRepository, BidRepository>();
+builder.Services.AddHostedService<AuctionTimeoutService>();
 
 var app = builder.Build();
 
