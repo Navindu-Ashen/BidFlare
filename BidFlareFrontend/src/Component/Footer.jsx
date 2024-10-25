@@ -33,10 +33,10 @@ const Footer = () => {
           <div className="qr-code">
             <img src="src/image/logo.png" alt="BidFlare Logo" />
             <div className="social-icons">
-            <a href="#" aria-label="LinkedIn"><FaLinkedin className="social-icon" /></a>
-            <a href="#" aria-label="Facebook"><FaFacebook className="social-icon" /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram className="social-icon" /></a>
-            <a href="mailto:contact.bidflare@gmail.com" aria-label="Email"><FaEnvelope className="social-icon" /></a>
+            <a href="https://www.linkedin.com" target="_blank"  aria-label="LinkedIn"><FaLinkedin className="social-icon" /></a>
+            <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><FaFacebook className="social-icon" /></a>
+            <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><FaInstagram className="social-icon" /></a>
+            <a href="mailto:contact.bidflare@gmail.com" target="_blank" aria-label="Email"><FaEnvelope className="social-icon" /></a>
           </div>
           </div>
           
