@@ -127,6 +127,8 @@ namespace BidFlareBackend.Controllers.Account
             return Ok(user);
         }
 
+        
+
         [HttpPost("changeRole")]
         public async Task<IActionResult> ChangeUserRole(string userId)
         {

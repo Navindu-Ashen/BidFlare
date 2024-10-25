@@ -23,4 +23,7 @@ public interface IAccountRepository
 
     Task<SignInResult?> LoginUser(AppUser appUser, LoginDto loginDto);
 
+    Task<IList<AppUser>?> GetAllUsersAsync();
+    Task<IList<AppUser>?> GetAllBiddersAsync();
+
 }

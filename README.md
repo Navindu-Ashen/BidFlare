@@ -38,9 +38,9 @@ The platform is built using **ASP.NET Web API** for the backend and **React** fo
 3. **Frontend**:
    - Navigate to the frontend folder and install npm dependencies.
    ```
-   cd BidFlareFronend
+   cd BidFlareFrontend
    npm install
-   npm start
+   npm run dev
    ```
 
 4. **Database Setup**:
