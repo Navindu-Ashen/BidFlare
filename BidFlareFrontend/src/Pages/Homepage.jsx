@@ -7,18 +7,18 @@ function Homepage() {
   const [selectedCar, setSelectedCar] = useState(null);
 
   const cars = [
-    { id: 1, img: "src/image/car3.jpg", name: "2021 McLaren 720s", price: "$260,000" },
+    { id: 1, img: "src/image/car3.jpg", name: "2021 McLaren 720s coupe", price: "$260,000" },
     { id: 2, img: "src/image/car4.jpg", name: "2020 Rolls Royce Ghost", price: "$299,000" },
     { id: 3, img: "src/image/car2.jpg", name: "Bugatti Veyron Vision GT", price: "$2,555,000" },
-    { id: 4, img: "src/image/bmw.png", name: "Bentley Flying Spur", price: "$319,000" },
-    { id: 1, img: "src/image/bmw.png", name: "2021 McLaren 720s", price: "$260,000" },
-    { id: 2, img: "src/image/bmw2.png", name: "2020 Rolls Royce Ghost", price: "$299,000" },
-    { id: 3, img: "src/image/benz3.png", name: "Bugatti Veyron Vision GT", price: "$2,555,000" },
-    { id: 4, img: "src/image/benz2.png", name: "Bentley Flying Spur", price: "$319,000" },
-    { id: 1, img: "src/image/jeep.png", name: "2021 McLaren 720s", price: "$260,000" },
-    { id: 2, img: "src/image/toyota.png", name: "2020 Rolls Royce Ghost", price: "$299,000" },
-    { id: 3, img: "src/image/car5.png", name: "Bugatti Veyron Vision GT", price: "$2,555,000" },
-    { id: 4, img: "src/image/benz3.png", name: "Bentley Flying Spur", price: "$319,000" },
+    { id: 4, img: "src/image/bmw.png", name: "BMW M5 Coupe", price: "$319,000" },
+    { id: 1, img: "src/image/car1.jpg", name: "2019 Bentley Flying spur grand", price: "$260,000" },
+    { id: 2, img: "src/image/bmw2.png", name: "2015 BMW M3 Grand coupe", price: "$299,000" },
+    { id: 3, img: "src/image/benz3.png", name: "Mercedes benz S400 LWB", price: "$2,555,000" },
+    { id: 4, img: "src/image/benz2.png", name: "Mercedes benz CLA", price: "$319,000" },
+    { id: 1, img: "src/image/jeep.png", name: "Jeep Grand Cherokee", price: "$260,000" },
+    { id: 2, img: "src/image/toyota.png", name: "2020 TOYOTA Land Cruiser", price: "$299,000" },
+    { id: 3, img: "src/image/car5.png", name: " 2018 Chevrollet camerro SS", price: "$2,555,000" },
+    { id: 4, img: "src/image/benz3.png", name: "Mercedes benz S400", price: "$319,000" },
     // Add more cars as needed
   ];
 
