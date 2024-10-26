@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Auction from './Auction'; // Import Auction component
 
 export default function AuctionDetails() {
   const location = useLocation();
   const { car } = location.state;
+
+  const [isAuctionOpen, setIsAuctionOpen] = useState(false);
+
+  const handlePlaceBid = () => {
+    setIsAuctionOpen(true);
+  };
+
+  const closeAuction = () => {
+    setIsAuctionOpen(false);
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -18,6 +29,16 @@ export default function AuctionDetails() {
         <p className="text-lg"><strong>Current Bid:</strong> {car.price}</p>
         {/* Add more details as needed */}
       </div>
+      <div className="mt-4 flex space-x-4">
+        <button
+          className="bg-orange-500 text-white font-bold py-2 px-4 rounded transition-opacity duration-300 hover:opacity-90"
+          onClick={handlePlaceBid}
+        >
+          Place Bid
+        </button>
+      </div>
+
+      {isAuctionOpen && <Auction car={car} onClose={closeAuction} />}
     </div>
   );
 }

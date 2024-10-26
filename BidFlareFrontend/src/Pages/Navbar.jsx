@@ -35,7 +35,9 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center bg-orange-600 p-4">
       <div className="flex items-center">
+        <Link to ="/" >
         <span className="text-2xl font-bold text-white">BidFlare</span>
+        </Link>
       </div>
       <ul className="flex gap-5 list-none justify-center align-bottom">
         <li className="text-white cursor-pointer">Vehicles</li>
