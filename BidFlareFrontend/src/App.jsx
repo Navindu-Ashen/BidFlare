@@ -1,4 +1,3 @@
-// App.jsx
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
@@ -14,6 +13,7 @@ import Footer from './Component/Footer.jsx';
 import Auction from './Pages/Auction.jsx';
 import Profile from './Pages/profile.jsx';
 import Homepage from './Pages/Homepage.jsx';
+import AuctionDetails from './Pages/AuctionDetails.jsx';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -40,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/auction" element={<Auction />} />
+          <Route path="/car-details/:id" element={<AuctionDetails />} />
           
           {/* Protected Routes */}
           <Route 
