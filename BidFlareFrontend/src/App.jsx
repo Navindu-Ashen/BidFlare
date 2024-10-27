@@ -41,6 +41,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/auction" element={<Auction />} />
           <Route path="/car-details/:id" element={<AuctionDetails />} />
+          <Route path='/dashboard' element={<Dashboard />} />
           
           {/* Protected Routes */}
           <Route 
