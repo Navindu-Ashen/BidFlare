@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import './userdash.css';
 
-function Dashboard() {
+function UserDashboard() {
     const navigate = useNavigate();
 
     const handleCreateBidClick = () => {
@@ -49,11 +49,6 @@ function Dashboard() {
                             <p className="card-number">122</p>
                             <p className="card-subtitle">1 Completed with 23%</p>
                         </div>
-                        <div className="card">
-                            <h2 className="card-title">Average percentage</h2>
-                            <p className="card-number">76%</p>
-                            <p className="card-subtitle-success">5% Completed</p>
-                        </div>
                     </div> 
                 </section>
             </div>
@@ -61,4 +56,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default UserDashboard;

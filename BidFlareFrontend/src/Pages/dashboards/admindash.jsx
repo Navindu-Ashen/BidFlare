@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import './Amindash.css';
+import './admindash.css';
 
-function Dashboard() {
+function AdminDashboard() {
     const navigate = useNavigate();
 
     const handleCreateBidClick = () => {
@@ -61,4 +61,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default AdminDashboard;
