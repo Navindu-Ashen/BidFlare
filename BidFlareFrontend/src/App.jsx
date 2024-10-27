@@ -1,10 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css"; 
 
 import { AuthProvider, useAuth } from './AuthContext.jsx';
-import Dashboard from './dashboardpage.jsx';
+import Dashboard from './Pages/dashboardpage.jsx';
 import AddBidItem from './components/AddBidItem';
 import Login from './Pages/Login.jsx';
 import Signup from './Pages/SignUp.jsx';
@@ -53,8 +51,7 @@ function App() {
             } 
           />
           <Route 
-            path="/bidder-profile" 
-            element={
+            path="/bidder-profile" element={
               <ProtectedRoute allowedRoles={['Bidder']}>
                 <Profile />
               </ProtectedRoute>

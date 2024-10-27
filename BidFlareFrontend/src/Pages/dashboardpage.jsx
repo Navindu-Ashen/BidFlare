@@ -10,9 +10,6 @@ function Dashboard() {
     return (
         <div className="flex h-screen">
             <aside className="w-64 bg-gray-800 text-white p-5 flex flex-col">
-                <div className="mb-10">
-                    <h2 className="text-2xl font-bold">Bid Flare</h2>
-                </div>
                 <nav>
                     <ul className="space-y-5">
                         <li><a href="#" className="text-white hover:underline">Dashboard</a></li>
