@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../AuthContext.jsx';
+import { useAuth } from '../Services/AuthContext.jsx';
 
 function Login() {
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ function Login() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100 mt-5 mb-5">
+    <div className="flex h-screen items-center justify-center bg-gray-100 mt-0 mb-0 ">
       <div className="bg-white shadow-lg rounded-lg flex w-full max-w-4xl">
         {/* Left side with an image */}
         <div className="hidden md:block md:w-1/2">
@@ -69,13 +69,7 @@ function Login() {
         {/* Right side with the form */}
         <div className="p-8 w-full md:w-1/2">
           {/* Website Icon (Aligned to the left) */}
-          <div className="mb-6">
-            <img
-              src="https://s3-alpha-sig.figma.com/img/b13b/f6cb/dfc38a00adfa5f2f6e989906f8f22586?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gPgVdMNr2ZlaI9M6OebgmRyqzUsWoV4~uZcfREdkxD8GPgSADOAgCHnxedqNAlE8iEyTOll84Hj6FgK4trsxloaC5LHbIeJG4qCzMp34PyROO2beqU308ag0IWHyl2d4UTfTvc0ss1tPdD9IKTLu8Zad50LkyRbLZeY-jWyu1FRbyIA8Ub1boU94h-BLU3LtB90cPpZ5QZLGeU~--gU03mWm49ODjknhsMbK46U675Wg6HVEgM5dU9fm7mcs0M-cqjiF1XKt-uH9xgw7eKBgSeyLC8S7MZJfaIRYvMPX9k3qblIlsLU0IxxI0tA-7sgi9PNi~PjwnVQxlJLMOdATvA__" // Replace this with your actual icon URL
-              alt="Website Icon"
-              className="w-16 h-16"
-            />
-          </div>
+        
 
           <h1 className="text-2xl font-semibold mb-6">Log in</h1>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './Services/AuthContext.jsx';
 
-import { AuthProvider, useAuth } from './AuthContext.jsx';
 import Dashboard from './Pages/dashboardpage.jsx';
 import AddBidItem from './components/AddBidItem';
 import Login from './Pages/Login.jsx';
@@ -40,6 +40,7 @@ function App() {
           <Route path="/auction" element={<Auction />} />
           <Route path="/car-details/:id" element={<AuctionDetails />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          
           
           {/* Protected Routes */}
           <Route 
