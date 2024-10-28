@@ -59,14 +59,14 @@ function App() {
             } 
           />
           <Route 
-            path="/bidder-profile" element={
+            path="/dashboard" element={
               <ProtectedRoute allowedRoles={['Bidder']}>
                 <Profile />
               </ProtectedRoute>
             } 
           />
           <Route 
-            path="/user-profile" 
+            path="/user-dashboard" 
             element={
               <ProtectedRoute allowedRoles={['User']}>
                 <Profile />
@@ -76,7 +76,7 @@ function App() {
           <Route 
             path="/add-bid-item" 
             element={
-              <ProtectedRoute allowedRoles={['Admin', 'User']}>
+              <ProtectedRoute allowedRoles={['Bidder']}>
                 <AddBidItem />
               </ProtectedRoute>
             } 
