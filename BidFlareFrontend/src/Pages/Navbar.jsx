@@ -1,7 +1,7 @@
 // Navbar.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext.jsx';
+import { useAuth } from '../Services/AuthContext.jsx';
 
 const Navbar = () => {
   const { isAuthenticated, logout, userRole, userInfo } = useAuth();
@@ -17,9 +17,9 @@ const Navbar = () => {
       case 'Admin':
         return '/admin-dashboard';
       case 'Bidder':
-        return '/bidder-profile';
+        return '/dashboard';
       case 'User':
-        return '/user-profile';
+        return '/user-dashboard';
       default:
         return '/';
     }
@@ -27,7 +27,7 @@ const Navbar = () => {
 
   const getProfileButtonText = () => {
     if (userInfo?.name) {
-      return `${userRole}: ${userInfo.name}`;
+      return `Hey, ${userInfo.name}`;
     }
     return `${userRole} Profile`;
   };
@@ -60,7 +60,7 @@ const Navbar = () => {
             </Link>
             <button 
               onClick={handleLogout}
-              className="bg-red-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-red-600"
+              className="bg-red-700 text-white py-2 px-4 rounded cursor-pointer hover:bg-red-600"
             >
               Logout
             </button>

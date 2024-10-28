@@ -1,13 +1,15 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Security.Claims;
-using BidFlareBackend.Data;
+using System.Threading.Tasks;
 using BidFlareBackend.Dtos.Auction;
 using BidFlareBackend.Interfaces;
 using BidFlareBackend.Mappers;
-using BidFlareBackend.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace BidFlareBackend.Controllers.Bid
 {

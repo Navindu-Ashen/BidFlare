@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './Services/AuthContext.jsx';
 
-import { AuthProvider, useAuth } from './AuthContext.jsx';
 import Dashboard from './Pages/dashboardpage.jsx';
 import AddBidItem from './components/AddBidItem';
 import Login from './Pages/Login.jsx';
@@ -14,6 +14,7 @@ import Homepage from './Pages/Homepage.jsx';
 import AuctionDetails from './Pages/AuctionDetails.jsx';
 import AdminDashboard from './Pages/dashboards/admindash.jsx'
 import UserDashboard from './Pages/dashboards/userdash.jsx'
+import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -44,7 +45,9 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/admin-dashboard' element={<AdminDashboard/>} />
           <Route path='/user-dashboard' element={<UserDashboard/>} />
+          <Route path='/pay-success' element={<PaymentSuccess/>} />
 
+          
           
           {/* Protected Routes */}
           <Route 
@@ -56,14 +59,14 @@ function App() {
             } 
           />
           <Route 
-            path="/bidder-profile" element={
+            path="/dashboard" element={
               <ProtectedRoute allowedRoles={['Bidder']}>
                 <Profile />
               </ProtectedRoute>
             } 
           />
           <Route 
-            path="/user-profile" 
+            path="/user-dashboard" 
             element={
               <ProtectedRoute allowedRoles={['User']}>
                 <Profile />
@@ -73,7 +76,7 @@ function App() {
           <Route 
             path="/add-bid-item" 
             element={
-              <ProtectedRoute allowedRoles={['Admin', 'User']}>
+              <ProtectedRoute allowedRoles={['Bidder']}>
                 <AddBidItem />
               </ProtectedRoute>
             } 

@@ -29,41 +29,37 @@ function AdminDashboard() {
                     </ul>
                 </nav>
             </aside>
-            <main className="admin-profile-container">
+            <div className="admin-profile-container">
                 <header className="admin-header">
                     <h1>Admin Profile</h1>
                 </header>
-
-                <section className="profile-details">
-                    <h2>Profile details</h2>
-                    <p><strong>First Name:</strong> Navindu</p>
-                    <p><strong>Last Name:</strong> Ashen</p>
-                    <p><strong>Contact number:</strong> 0719967276</p>
-                    <p><strong>NIC:</strong> 200224801369</p>
-                    <p><strong>Email:</strong> navindu158@gmail.com</p>
+ 
+                <section className="auctions-section">
+                    <h1 className="auctions-title">Auctions</h1>
+                    <div className="cards-container">
+                        <div className="card">
+                            <h2 className="card-title">Pending Bids</h2>
+                            <p className="card-number">18</p>
+                            <p className="card-subtitle">2 Completed</p>
+                        </div>
+                        <div className="card">
+                            <h2 className="card-title">Active bids</h2>
+                            <p className="card-number">132</p>
+                            <p className="card-subtitle">28 Completed</p>
+                        </div>
+                        <div className="card">
+                            <h2 className="card-title">Sold</h2>
+                            <p className="card-number">122</p>
+                            <p className="card-subtitle">1 Completed with 23%</p>
+                        </div>
+                        <div className="card">
+                            <h2 className="card-title">Average percentage</h2>
+                            <p className="card-number">76%</p>
+                            <p className="card-subtitle-success">5% Completed</p>
+                        </div>
+                    </div> 
                 </section>
-
-                <div className="cards-container">
-                    <div className="card">
-                        <h3>Active Bids</h3>
-                        <p>Active Bids: <strong>20</strong></p>
-                        <p>Pending Bids: <strong>20</strong></p>
-                        <button className="see-all-button">See all</button>
-                    </div>
-                    
-                    <div className="card">
-                        <h3>Users</h3>
-                        <p>Active users: <strong>157</strong></p>
-                        <button className="see-all-button">See all</button>
-                    </div>
-                    
-                    <div className="card">
-                        <h3>Bids</h3>
-                        <p>Active: <strong>10</strong></p>
-                        <button className="see-all-button">See all</button>
-                    </div>
-                </div>
-            </main>
+            </div>
         </div>
     );
 }
