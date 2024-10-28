@@ -1,7 +1,7 @@
 // Navbar.jsx
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../AuthContext.jsx';
+import { useAuth } from '../Services/AuthContext.jsx';
 
 const Navbar = () => {
   const { isAuthenticated, logout, userRole, userInfo } = useAuth();

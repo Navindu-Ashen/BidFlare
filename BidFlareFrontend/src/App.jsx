@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './Services/AuthContext.jsx';
 
-import { AuthProvider, useAuth } from './AuthContext.jsx';
 import Dashboard from './Pages/dashboardpage.jsx';
 import AddBidItem from './components/AddBidItem';
 import Login from './Pages/Login.jsx';
@@ -12,6 +12,8 @@ import Auction from './Pages/Auction.jsx';
 import Profile from './Pages/profile.jsx';
 import Homepage from './Pages/Homepage.jsx';
 import AuctionDetails from './Pages/AuctionDetails.jsx';
+import AdminDashboard from './Pages/dashboards/admindash.jsx'
+import UserDashboard from './Pages/dashboards/userdash.jsx'
 
 // Protected Route Component
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -40,6 +42,10 @@ function App() {
           <Route path="/auction" element={<Auction />} />
           <Route path="/car-details/:id" element={<AuctionDetails />} />
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/admin-dashboard' element={<AdminDashboard/>} />
+          <Route path='/user-dashboard' element={<UserDashboard/>} />
+
+          
           
           {/* Protected Routes */}
           <Route 
