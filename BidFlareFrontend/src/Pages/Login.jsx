@@ -11,15 +11,18 @@ function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
+    if(username.length < 6){
+      setError("User Name must be at least 6 characters");
+      setLoading(false);
+      return;
+    }
+  
     try {
       const response = await fetch("http://localhost:5116/api/account/login", {
         method: "POST",
