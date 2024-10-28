@@ -14,6 +14,7 @@ import Homepage from './Pages/Homepage.jsx';
 import AuctionDetails from './Pages/AuctionDetails.jsx';
 import AdminDashboard from './Pages/dashboards/admindash.jsx'
 import UserDashboard from './Pages/dashboards/userdash.jsx'
+import PaymentSuccess from './Pages/PaymentSuccess.jsx';
 
 // Protected Route Component
 const ProtectedRoute = ({ children, allowedRoles }) => {
@@ -44,6 +45,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/admin-dashboard' element={<AdminDashboard/>} />
           <Route path='/user-dashboard' element={<UserDashboard/>} />
+          <Route path='/pay-success' element={<PaymentSuccess/>} />
 
           
           
