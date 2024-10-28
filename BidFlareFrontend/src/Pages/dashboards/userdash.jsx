@@ -30,7 +30,6 @@ function UserDashboard() {
                 <header className="header">
                     <div className="header-icon"></div>
                 </header>
-
                 <section className="auctions-section">
                     <h1 className="auctions-title">Auctions</h1>
                     <div className="cards-container">
@@ -50,9 +49,23 @@ function UserDashboard() {
                             <p className="card-subtitle">1 Completed with 23%</p>
                         </div>
                     </div> 
+                    <div>
+                    <h1 className="auctions-title">Active Bids</h1>
+
+                    <div>
+                        
+                    </div>
+                        
+                    </div>
                 </section>
-            </div>
+            
+                
+            </div>                  
+            
+            
         </div>
+
+        
     );
 }
 

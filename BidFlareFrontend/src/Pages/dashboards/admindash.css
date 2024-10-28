@@ -1,100 +1,172 @@
+/* Full screen layout */
 .dashboard-container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
+/* Sidebar styling */
 .sidebar {
-    width: 16rem;
     background-color: #1f2937;
-    color: white;
-    padding: 1.25rem;
+    color: #f3f4f6;
+    width: 250px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-menu {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .menu-item {
-    color: white;
-    text-decoration: none;
+    background: none;
+    border: none;
+    color: #f3f4f6;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
 }
 
 .menu-item:hover {
-    text-decoration: underline;
+    background-color: #374151;
 }
 
 .section-title {
-    font-size: 0.875rem;
+    color: #9CA3AF;
+    margin-top: 20px;
     font-weight: bold;
-    color: #9ca3af;
-    margin-top: 1.25rem;
 }
 
-.content {
-    flex: 1;
-    padding: 1.25rem;
+/* Main container */
+.admin-profile-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    color: #1f2937;
     background-color: #f3f4f6;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
-.header {
+/* Header styling */
+.admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.25rem;
 }
 
-.header-icon {
-    background-color: #e5e7eb;
-    padding: 0.75rem;
-    border-radius: 50%;
+.admin-header h1 {
+    color:#ea580c;
+    font-size: 2rem;
 }
 
-.auctions-section {
-    background-color: #f3f4f6;
+.logout-button {
+    padding: 10px 20px;
+    background-color: #B71C1C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.auctions-title {
-    font-size: 2.25rem;
-    color: #f97316;
-    margin-bottom: 1.25rem;
+.logout-button:hover {
+    background-color: #ea580c;
 }
 
+/* Profile details section */
+.profile-details {
+    color: #1f2937;
+}
+
+.profile-details h2 {
+    color: #ea580c;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Card container */
 .cards-container {
     display: flex;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
+/* Card styling */
 .card {
     background-color: white;
-    padding: 1.25rem;
-    border-radius: 0.5rem;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    width: 25%;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+    color:#ea580c;
+    transition: box-shadow 0.3s;
 }
 
-.card-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-}
-
-.card-number {
-    font-size: 2.25rem;
+.card h3 {
+    margin-bottom: 10px;
+    color: #000000;
+    font-size: 1.25rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
-.card-subtitle {
-    font-size: 0.875rem;
+.card p {
     color: #6b7280;
 }
 
-.card-subtitle-success {
-    font-size: 0.875rem;
-    color: #10b981;
-    font-weight: 600;
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.see-all-button {
+    padding: 10px 20px;
+    background-color:#ea580c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.see-all-button:hover {
+    background-color: #ea580c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cards-container {
+        gap: 10px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logout-button, .see-all-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .admin-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-details h2 {
+        font-size: 1.25rem;
+    }
 }
