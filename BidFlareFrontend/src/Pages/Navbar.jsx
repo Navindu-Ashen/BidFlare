@@ -17,7 +17,7 @@ const Navbar = () => {
       case 'Admin':
         return '/admin-dashboard';
       case 'Bidder':
-        return '/bidder-dashboard';
+        return '/dashboard';
       case 'User':
         return '/user-dashboard';
       default:
