@@ -18,25 +18,25 @@ function Homepage() {
 
     { id: 5, img: "/car1.jpg", name: "2019 Bentley Flying spur grand", price: "$260,000", year: 2019, brand: "Bentley", model: "Flying spur grand", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 6, img: "/bmw2.png", name: "2015 BMW M3 Grand coupe", price: "$299,000", year: 2015, brand: "BMW", model: "M3 Grand coupe", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 6, img: "/bmw2.png", name: "2015 BMW M3 Grand coupe", price: "$299,000", year: 2015, brand: "BMW", model: "M3 Grand coupe", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 7, img: "/benz3.png", name: "Mercedes benz S400 LWB", price: "$2,555,000", year: 2020, brand: "Mercedes", model: "S400 LWB", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 7, img: "/benz3.png", name: "Mercedes benz S400 LWB", price: "$2,555,000", year: 2020, brand: "Mercedes", model: "S400 LWB", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 8, img: "/benz2.png", name: "Mercedes benz CLA", price: "$319,000", year: 2019, brand: "Mercedes", model: "CLA", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 8, img: "/benz2.png", name: "Mercedes benz CLA", price: "$319,000", year: 2019, brand: "Mercedes", model: "CLA", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 9, img: "/jeep.png", name: "Jeep Grand Cherokee", price: "$260,000", year: 2018, brand: "Jeep", model: "Grand Cherokee", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 9, img: "/jeep.png", name: "Jeep Grand Cherokee", price: "$260,000", year: 2018, brand: "Jeep", model: "Grand Cherokee", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 10, img: "/toyota.png", name: "TOYOTA Land Cruiser", price: "$299,000", year: 2020, brand: "Toyota", model: "Land Cruiser", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 10, img: "/toyota.png", name: "TOYOTA Land Cruiser", price: "$299,000", year: 2020, brand: "Toyota", model: "Land Cruiser", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 11, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 11, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 12, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 12, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 13, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 13, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 14, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
+    // { id: 14, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" },
 
-    { id: 15, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" }
+    // { id: 15, img: "/car5.png", name: "2018 Chevrollet camerro SS", price: "$2,555,000", year: 2018, brand: "Chevrolet", model: "Camerro SS", features: "Feature 1, Feature 2", description: "Description of the car" }
   ];
 
   const handlePlaceBid = (car) => {

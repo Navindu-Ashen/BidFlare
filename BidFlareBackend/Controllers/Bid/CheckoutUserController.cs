@@ -154,7 +154,7 @@ namespace BidFlareBackend.Controllers.Bid
                 return BadRequest("Somthing went wrong. Pleace contact developers");
             }
             
-            return Redirect(s_wasmClientURL.TrimEnd('/') + "/success");
+            return Redirect("http://localhost:5173/pay-success");
         }
     }
 }

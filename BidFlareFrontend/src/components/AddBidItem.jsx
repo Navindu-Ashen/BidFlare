@@ -66,7 +66,7 @@ function AddBidItem() {
         name: itemName,
         description: description,
         daysToExpire: parseInt(daysToExpire),
-        minPrice: parseFloat(startingBid),
+        minPrice: parseInt(startingBid),
         imageName: newFileName,
         categoryId: parseInt(categoryId)
       };
@@ -112,7 +112,7 @@ function AddBidItem() {
       }}
     >
       <div className="w-full max-w-md shadow-md rounded-lg p-10 m-10 pb-20 bg-blue-500">
-        <h2 className="text-2xl font-semibold mb-6 text-center text-white">Add New Bid Item</h2>
+        <h2 className="text-2xl font-semibold mb-6 text-center text-white">Add New Auction</h2>
         {error && (
           <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
             {error}

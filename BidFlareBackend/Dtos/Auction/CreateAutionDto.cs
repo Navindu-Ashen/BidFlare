@@ -7,7 +7,7 @@ public class CreateAutionDto
 {
     [Required]
     [MinLength(6, ErrorMessage = "Product name must be at least 6 characters")]
-    [MaxLength(20, ErrorMessage = "Product name should not exceed 20 characters")]
+    [MaxLength(100, ErrorMessage = "Product name should not exceed 100 characters")]
     public string Name { get; set; } = string.Empty;
 
     [Required]
