@@ -58,11 +58,17 @@ function UserDashboard() {
                         
                     </div>
                 </section>
-            
+
+
+                <div class="card">
+                <img src="/car3.jpg" alt="2021 McLaren 720s coupe" />
+              <h3>2021 McLaren 720s coupe</h3>
+              <p class="price">$260,000</p>
+              <button class="btn bid">Place Bid</button>
+              <button class="btn details">View Details</button>
+                    </div>
                 
-            </div>                  
-            
-            
+            </div>                      
         </div>
 
         
